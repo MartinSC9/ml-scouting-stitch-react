@@ -53,10 +53,22 @@ export default function Home() {
 
       {/* About Marco */}
       <section className="py-20 px-8 relative overflow-hidden">
-        {/* Subtle background pattern */}
-        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#0A1A3A 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
-        <div className="absolute top-10 -right-20 w-80 h-80 rounded-full border border-[#0A1A3A]/[0.06]" />
-        <div className="absolute bottom-10 -left-20 w-60 h-60 rounded-full border border-[#445d94]/[0.06]" />
+        {/* Field lines texture (same as Contacto) */}
+        <div className="absolute inset-0 pointer-events-none" style={{ opacity: 0.04 }}>
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="fieldLines" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse">
+                <line x1="60" y1="0" x2="60" y2="120" stroke="#0A1A3A" strokeWidth="1" />
+                <line x1="0" y1="60" x2="120" y2="60" stroke="#0A1A3A" strokeWidth="1" />
+                <circle cx="60" cy="60" r="30" fill="none" stroke="#0A1A3A" strokeWidth="1" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#fieldLines)" />
+          </svg>
+        </div>
+        {/* Gradient accents */}
+        <div className="absolute -top-32 -right-32 w-96 h-96 bg-[#445d94]/[0.04] rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-[#a7c0fd]/[0.05] rounded-full blur-3xl pointer-events-none" />
         <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
           <div className="relative max-w-sm mx-auto">
             {/* Decorative accent behind photo */}
