@@ -43,7 +43,7 @@ export default function Footer() {
 
         {/* Divider + bottom bar */}
         <div className="border-t border-white/10 pt-6 flex flex-wrap justify-between items-center text-xs text-slate-500 gap-4">
-          <p>&copy; 2025 ML Scouting Academy</p>
+          <p>&copy; 2025 ML Scouting Academy · Desarrollado por <a href="https://cu-digital-nu.vercel.app/projects" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-white transition">CU Digital</a></p>
           <div className="flex gap-4">
             <button onClick={() => { navigate('/legal?tab=privacidad'); window.scrollTo(0, 0) }} className="hover:text-white">Politica de Privacidad</button>
             <button onClick={() => { navigate('/legal?tab=terminos'); window.scrollTo(0, 0) }} className="hover:text-white">Terminos de Uso</button>

@@ -4,12 +4,12 @@ import Footer from '../../components/Footer'
 import Icon from '../../components/Icon'
 
 const articles = [
-  {cat:'Scouting',catBg:'bg-blue-50 text-blue-700',title:'Como preparar tu video highlight para scouts',desc:'Consejos clave para que tu video destaque entre cientos de jugadores y llame la atencion de scouts profesionales.',date:'15 Oct 2026 · 5 min',bg:'bg-[#a7c0fd]/30'},
-  {cat:'Mercado',catBg:'bg-green-50 text-green-700',title:'Las ligas europeas que mas buscan talento sudamericano',desc:'Un analisis detallado de las oportunidades reales en Portugal, Italia, Belgica y otros mercados clave.',date:'10 Oct 2026 · 8 min',bg:'bg-[#d9e2ff]/30'},
-  {cat:'Para Jugadores',catBg:'bg-purple-50 text-purple-700',title:'5 errores que cometen los jugadores al buscar club',desc:'Evita estos errores comunes que pueden arruinar tu oportunidad de firmar con un club.',date:'5 Oct 2026 · 6 min',bg:'bg-[#d9e2ff]/30'},
-  {cat:'Analisis Tactico',catBg:'bg-orange-50 text-orange-700',title:'Que buscan los scouts en un mediocampista moderno',desc:'Las metricas y cualidades que definen al mediocampista que todos los clubes quieren fichar.',date:'1 Oct 2026 · 7 min',bg:'bg-[#a7c0fd]/30'},
-  {cat:'Curso',catBg:'bg-cyan-50 text-cyan-700',title:'Por que formarte en scouting es una oportunidad unica',desc:'El mercado del scouting crece y la demanda de profesionales formados supera la oferta.',date:'25 Sep 2026 · 4 min',bg:'bg-[#d9e2ff]/30'},
-  {cat:'Para Jugadores',catBg:'bg-purple-50 text-purple-700',title:'La importancia de los datos en el futbol moderno',desc:'Como los datos estan cambiando la forma en que los clubes evaluan y fichan jugadores.',date:'20 Sep 2026 · 6 min',bg:'bg-[#a7c0fd]/30'},
+  {cat:'Scouting',catBg:'bg-blue-50 text-blue-700',title:'Como preparar tu video highlight para scouts',desc:'Consejos clave para que tu video destaque entre cientos de jugadores y llame la atencion de scouts profesionales.',date:'15 Oct 2026 · 5 min',img:'https://images.unsplash.com/photo-1574629810360-7efbbe195018?w=600&h=400&fit=crop'},
+  {cat:'Mercado',catBg:'bg-green-50 text-green-700',title:'Las ligas europeas que mas buscan talento sudamericano',desc:'Un analisis detallado de las oportunidades reales en Portugal, Italia, Belgica y otros mercados clave.',date:'10 Oct 2026 · 8 min',img:'https://images.unsplash.com/photo-1522778119026-d647f0596c20?w=600&h=400&fit=crop'},
+  {cat:'Para Jugadores',catBg:'bg-purple-50 text-purple-700',title:'5 errores que cometen los jugadores al buscar club',desc:'Evita estos errores comunes que pueden arruinar tu oportunidad de firmar con un club.',date:'5 Oct 2026 · 6 min',img:'https://images.unsplash.com/photo-1431324155629-1a6deb1dec8d?w=600&h=400&fit=crop'},
+  {cat:'Analisis Tactico',catBg:'bg-orange-50 text-orange-700',title:'Que buscan los scouts en un mediocampista moderno',desc:'Las metricas y cualidades que definen al mediocampista que todos los clubes quieren fichar.',date:'1 Oct 2026 · 7 min',img:'https://images.unsplash.com/photo-1508098682722-e99c43a406b2?w=600&h=400&fit=crop'},
+  {cat:'Curso',catBg:'bg-cyan-50 text-cyan-700',title:'Por que formarte en scouting es una oportunidad unica',desc:'El mercado del scouting crece y la demanda de profesionales formados supera la oferta.',date:'25 Sep 2026 · 4 min',img:'https://images.unsplash.com/photo-1489944440615-453fc2b6a9a9?w=600&h=400&fit=crop'},
+  {cat:'Para Jugadores',catBg:'bg-purple-50 text-purple-700',title:'La importancia de los datos en el futbol moderno',desc:'Como los datos estan cambiando la forma en que los clubes evaluan y fichan jugadores.',date:'20 Sep 2026 · 6 min',img:'https://images.unsplash.com/photo-1551958219-acbc608c6377?w=600&h=400&fit=crop'},
 ]
 
 export default function Blog() {
@@ -32,7 +32,7 @@ export default function Blog() {
             <div className="lg:col-span-3 grid md:grid-cols-2 xl:grid-cols-3 gap-6">
               {articles.map((a,i)=>(
                 <Link key={i} to="/blog-articulo" className="bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-md transition group">
-                  <div className={`h-40 ${a.bg} flex items-center justify-center`}><Icon name="article" className="text-[#445d94]/40" style={{fontSize:'40px'}} /></div>
+                  <div className="h-40 overflow-hidden"><img src={a.img} alt={a.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" /></div>
                   <div className="p-5">
                     <span className={`text-xs ${a.catBg} px-2 py-1 rounded-full`}>{a.cat}</span>
                     <h3 className="font-bold text-[#0A1A3A] mt-2 mb-1 group-hover:underline">{a.title}</h3>

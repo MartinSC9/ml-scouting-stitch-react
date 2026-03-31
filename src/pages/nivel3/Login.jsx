@@ -202,6 +202,11 @@ export default function Login() {
           <p className="text-center text-xs text-slate-400 mt-6">
             ¿No tenes cuenta? <Link to="/registro" className="text-[#006970] font-semibold hover:underline">Registrate</Link>
           </p>
+          <div className="flex justify-center gap-3 mt-3 text-[10px] text-slate-400">
+            <Link to="/legal?tab=privacidad" className="hover:text-slate-600 transition">Politica de Privacidad</Link>
+            <span>·</span>
+            <Link to="/legal?tab=terminos" className="hover:text-slate-600 transition">Terminos de Uso</Link>
+          </div>
         </div>
       </div>
     </div>
