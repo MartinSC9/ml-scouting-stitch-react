@@ -23,13 +23,13 @@ export default function Curso() {
       <Navbar activeItem="curso" transparent />
       <main>
         {/* Hero */}
-        <section className="bg-[#0A1A3A] py-20 px-8">
+        <section className="bg-[#0A1A3A] pt-36 pb-24 px-8">
           <div className="max-w-5xl mx-auto grid md:grid-cols-2 gap-12 items-center">
             <div>
               <span className="inline-block bg-white/20 text-white text-xs px-3 py-1 rounded-full mb-4 font-medium">Proxima edicion: Septiembre 2026</span>
-              <h1 className="text-4xl font-bold text-white mb-4" style={{fontFamily:"'Noto Serif'"}}>Curso de Scouting Profesional</h1>
-              <p className="text-slate-300 mb-6">Aprende a detectar talento como un verdadero profesional. Formacion con herramientas de analisis modernas, tecnicas de observacion y mentorias con especialistas del futbol internacional.</p>
-              <div className="flex gap-6 mb-8">
+              <h1 className="text-4xl md:text-5xl font-bold text-white mb-5 leading-tight" style={{fontFamily:"'Noto Serif'"}}>Curso de Scouting Profesional</h1>
+              <p className="text-slate-300 text-lg mb-8 leading-relaxed">Aprende a detectar talento como un verdadero profesional. Formacion con herramientas de analisis modernas, tecnicas de observacion y mentorias con especialistas del futbol internacional.</p>
+              <div className="flex gap-6 mb-10">
                 {[{v:'6',l:'Modulos',icon:'school'},{v:'24',l:'Clases',icon:'play_circle'},{v:'3',l:'Meses',icon:'calendar_month'},{v:'83',l:'En espera',icon:'groups'}].map((s,i)=>(
                   <div key={i} className="text-center">
                     <Icon name={s.icon} className="text-[#a7c0fd] text-lg mb-1" />
@@ -38,7 +38,7 @@ export default function Curso() {
                   </div>
                 ))}
               </div>
-              <button onClick={scrollToForm} className="cursor-pointer bg-white text-[#0A1A3A] px-8 py-3 rounded-lg font-semibold hover:bg-slate-100 hover:scale-105 hover:shadow-lg active:scale-95 transition-all duration-200">Unirme a la lista de espera</button>
+              <button onClick={scrollToForm} className="cursor-pointer bg-white text-[#0A1A3A] px-8 py-3.5 rounded-lg font-semibold text-sm hover:bg-slate-100 hover:scale-105 hover:shadow-lg active:scale-95 transition-all duration-200">Unirme a la lista de espera</button>
             </div>
             <div className="rounded-xl overflow-hidden shadow-2xl">
               <video
@@ -52,11 +52,11 @@ export default function Curso() {
           </div>
         </section>
 
-        {/* Para quién es */}
+        {/* Para quien es */}
         <section className="py-16 px-8 bg-white">
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-10">
-              <h2 className="text-3xl font-bold text-[#0A1A3A] mb-2" style={{fontFamily:"'Noto Serif'"}}>Para quien es este curso?</h2>
+              <h2 className="text-3xl font-bold text-[#0A1A3A] mb-2" style={{fontFamily:"'Noto Serif'"}}>¿Para quien es este curso?</h2>
               <p className="text-slate-500 text-sm">Ideal para diferentes perfiles dentro del mundo del futbol.</p>
             </div>
             <div className="grid md:grid-cols-4 gap-5">
@@ -134,7 +134,7 @@ export default function Curso() {
             </div>
             <div className="text-center mt-6">
               <a href="https://marcolujan.tiendup.com/curso/curso-de-scouting-de-futbol/opiniones" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[#445d94] font-semibold text-sm hover:text-[#0A1A3A] transition">
-                Ver todas las resenas <Icon name="arrow_forward" className="text-sm" />
+                Ver todas las reseñas <Icon name="arrow_forward" className="text-sm" />
               </a>
             </div>
           </div>
@@ -151,17 +151,17 @@ export default function Curso() {
 
             <div className="space-y-3">
               {[
-                {q:'Necesito tener algun estudio previo para realizar el curso?',video:'https://ml-scouting.com/wp-content/uploads/2025/05/Necesito-tener-algun-estudio-previo-para-realizar-el-curso.mp4'},
-                {q:'Puedo realizar el curso desde cualquier parte del mundo?',video:'https://ml-scouting.com/wp-content/uploads/2025/05/Puedo-realizar-el-curso-desde-cualquier-parte-del-mundo.mp4'},
-                {q:'Por que plataformas se da el curso?',video:'https://ml-scouting.com/wp-content/uploads/2025/05/Por-que-plataformas-se-da-el-curso.mp4'},
-                {q:'Como es la metodologia de las clases del curso?',video:'https://ml-scouting.com/wp-content/uploads/2025/05/Como-es-la-metodologia-de-las-clases-del-curso.mp4'},
-                {q:'Otorgan alguna certificacion oficial al finalizar el curso?',video:'https://ml-scouting.com/wp-content/uploads/2025/05/Otorgan-alguna-certificacion-oficial-al-finalizar-el-curso.mp4'},
-                {q:'Cuales son las plataformas que nos ensenan a utilizar en el curso?',video:'https://ml-scouting.com/wp-content/uploads/2025/05/Cuales-son-las-plataformas-que-nos-ensenan-a-utilizar-en-el-curso.mp4'},
-                {q:'Quienes son los invitados de las clases? Los alumnos pueden interactuar con ellos?',video:'https://ml-scouting.com/wp-content/uploads/2025/05/Quienes-son-los-invitados-de-las-clases-Los-alumnos-pueden-interactuar-con-ellos.mp4'},
-                {q:'Como funciona la red de contactos que ofrecemos?',video:'https://ml-scouting.com/wp-content/uploads/2025/05/Como-funciona-la-red-de-contactos-que-ofrecemos.mp4'},
-                {q:'En que estadios se realizan las practicas y en que consisten?',video:'https://ml-scouting.com/wp-content/uploads/2025/05/En-que-estadios-se-realizan-las-practicas-y-en-que-consisten.mp4'},
-                {q:'En las practicas los alumnos tienen contacto con el club donde la realizan?',video:'https://ml-scouting.com/wp-content/uploads/2025/05/En-las-practicas-los-alumnos-tienen-contacto-con-el-club-donde-la-realizan.mp4'},
-                {q:'Cuales son las posibilidades reales de conseguir trabajo una vez finalizado el curso?',video:'https://ml-scouting.com/wp-content/uploads/2025/05/Cuales-son-las-posibilidades-reales-de-conseguir-trabajo-una-vez-finalizado-el-curso.mp4'},
+                {q:'¿Necesito tener algun estudio previo para realizar el curso?',video:'https://ml-scouting.com/wp-content/uploads/2025/05/Necesito-tener-algun-estudio-previo-para-realizar-el-curso.mp4'},
+                {q:'¿Puedo realizar el curso desde cualquier parte del mundo?',video:'https://ml-scouting.com/wp-content/uploads/2025/05/Puedo-realizar-el-curso-desde-cualquier-parte-del-mundo.mp4'},
+                {q:'¿Por que plataformas se da el curso?',video:'https://ml-scouting.com/wp-content/uploads/2025/05/Por-que-plataformas-se-da-el-curso.mp4'},
+                {q:'¿Como es la metodologia de las clases del curso?',video:'https://ml-scouting.com/wp-content/uploads/2025/05/Como-es-la-metodologia-de-las-clases-del-curso.mp4'},
+                {q:'¿Otorgan alguna certificacion oficial al finalizar el curso?',video:'https://ml-scouting.com/wp-content/uploads/2025/05/Otorgan-alguna-certificacion-oficial-al-finalizar-el-curso.mp4'},
+                {q:'¿Cuales son las plataformas que nos enseñan a utilizar en el curso?',video:'https://ml-scouting.com/wp-content/uploads/2025/05/Cuales-son-las-plataformas-que-nos-ensenan-a-utilizar-en-el-curso.mp4'},
+                {q:'¿Quienes son los invitados de las clases? ¿Los alumnos pueden interactuar con ellos?',video:'https://ml-scouting.com/wp-content/uploads/2025/05/Quienes-son-los-invitados-de-las-clases-Los-alumnos-pueden-interactuar-con-ellos.mp4'},
+                {q:'¿Como funciona la red de contactos que ofrecemos?',video:'https://ml-scouting.com/wp-content/uploads/2025/05/Como-funciona-la-red-de-contactos-que-ofrecemos.mp4'},
+                {q:'¿En que estadios se realizan las practicas y en que consisten?',video:'https://ml-scouting.com/wp-content/uploads/2025/05/En-que-estadios-se-realizan-las-practicas-y-en-que-consisten.mp4'},
+                {q:'¿En las practicas los alumnos tienen contacto con el club donde la realizan?',video:'https://ml-scouting.com/wp-content/uploads/2025/05/En-las-practicas-los-alumnos-tienen-contacto-con-el-club-donde-la-realizan.mp4'},
+                {q:'¿Cuales son las posibilidades reales de conseguir trabajo una vez finalizado el curso?',video:'https://ml-scouting.com/wp-content/uploads/2025/05/Cuales-son-las-posibilidades-reales-de-conseguir-trabajo-una-vez-finalizado-el-curso.mp4'},
               ].map((f,i)=>(
                 <details key={i} className="bg-[#f7f9fc] rounded-xl border border-slate-100 overflow-hidden group">
                   <summary className="flex items-center gap-3 p-5 cursor-pointer font-semibold text-[#0A1A3A] text-sm">
@@ -197,7 +197,7 @@ export default function Curso() {
               <div>
                 <label className="block text-sm font-medium text-[#191c1e] mb-1.5">Pais</label>
                 <select className="w-full border border-[#c5c6cf] rounded-lg px-4 py-3 text-sm focus:ring-2 focus:ring-[#445d94] focus:border-[#445d94]">
-                  <option value="">Selecciona tu pais</option><option>Argentina</option><option>Espana</option><option>Mexico</option><option>Colombia</option><option>Chile</option><option>Otro</option>
+                  <option value="">Selecciona tu pais</option><option>Argentina</option><option>España</option><option>Mexico</option><option>Colombia</option><option>Chile</option><option>Otro</option>
                 </select>
               </div>
               <button type="submit" className="cursor-pointer w-full bg-[#0A1A3A] text-white py-3.5 rounded-lg font-semibold text-sm hover:bg-[#0A1A3A]/90 hover:scale-105 hover:shadow-lg active:scale-95 transition-all duration-200">Unirme a la Lista de Espera</button>
