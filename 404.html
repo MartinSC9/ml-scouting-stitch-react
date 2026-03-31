@@ -1,12 +1,24 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>ML Scouting Academy</title>
-<script>
-  sessionStorage.redirect = location.href;
-  location.replace('/ml-scouting-stitch-react/');
-</script>
-</head>
-<body></body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/ml-scouting-stitch-react/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ML Scouting Academy</title>
+    <!-- SPA redirect handler for GitHub Pages -->
+    <script>
+      (function(){
+        var redirect = sessionStorage.redirect;
+        delete sessionStorage.redirect;
+        if (redirect && redirect !== location.href) {
+          history.replaceState(null, null, redirect);
+        }
+      })();
+    </script>
+    <script type="module" crossorigin src="/ml-scouting-stitch-react/assets/index-D7Fs8RAl.js"></script>
+    <link rel="stylesheet" crossorigin href="/ml-scouting-stitch-react/assets/index-BIoW7U6J.css">
+  </head>
+  <body>
+    <div id="root"></div>
+  </body>
 </html>
