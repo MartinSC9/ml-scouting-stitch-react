@@ -20,7 +20,7 @@ export default function AdminJugadorDetalle() {
 
   const headerTitle = (
     <div className="flex items-center gap-3">
-      <Link to="/nivel-3/admin/jugadores" className="text-slate-400 hover:text-[#0A1A3A]"><Icon name="arrow_back" /></Link>
+      <Link to="/admin/jugadores" className="text-slate-400 hover:text-[#0A1A3A]"><Icon name="arrow_back" /></Link>
       <h2 className="text-[#0A1A3A] text-lg font-bold">Mateo Lopez</h2>
     </div>
   )
@@ -29,7 +29,7 @@ export default function AdminJugadorDetalle() {
     <AdminLayout activeItem="jugadores" title="" level={3} headerActions={
       <div className="flex items-center justify-between w-full">
         <div className="flex items-center gap-3">
-          <Link to="/nivel-3/admin/jugadores" className="text-slate-400 hover:text-[#0A1A3A]"><Icon name="arrow_back" /></Link>
+          <Link to="/admin/jugadores" className="text-slate-400 hover:text-[#0A1A3A]"><Icon name="arrow_back" /></Link>
           <h2 className="text-[#0A1A3A] text-lg font-bold" style={{ fontFamily: "'Noto Serif'" }}>Mateo Lopez</h2>
         </div>
         {headerActions}

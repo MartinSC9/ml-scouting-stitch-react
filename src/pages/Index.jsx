@@ -8,7 +8,7 @@ export default function Index() {
         <p className="text-[#666] mb-10">Prototipos de interfaz para la propuesta de desarrollo</p>
 
         <div className="flex flex-col gap-4">
-          <a href={`${base}nivel-3/home`} target="_blank" rel="noopener noreferrer" className="block bg-[#0a1a3a] text-white px-8 py-5 rounded-xl font-semibold text-lg no-underline hover:bg-[#0a1a3a]/90 transition-colors shadow-lg">
+          <a href={`${base}`} target="_blank" rel="noopener noreferrer" className="block bg-[#0a1a3a] text-white px-8 py-5 rounded-xl font-semibold text-lg no-underline hover:bg-[#0a1a3a]/90 transition-colors shadow-lg">
             Nivel 3 — Premium
           </a>
         </div>

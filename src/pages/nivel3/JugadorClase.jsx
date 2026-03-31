@@ -5,7 +5,7 @@ import Icon from '../../components/Icon'
 export default function JugadorClase() {
   return (
     <PlayerLayout activeItem="cursos" level={3}>
-      <Link to="/nivel-3/jugador-cursos" className="text-sm text-[#445d94] hover:underline mb-6 inline-flex items-center gap-1"><Icon name="arrow_back" className="text-sm" /> Volver a Cursos</Link>
+      <Link to="/jugador-cursos" className="text-sm text-[#445d94] hover:underline mb-6 inline-flex items-center gap-1"><Icon name="arrow_back" className="text-sm" /> Volver a Cursos</Link>
 
       <div className="grid md:grid-cols-3 gap-8">
         <div className="md:col-span-2">

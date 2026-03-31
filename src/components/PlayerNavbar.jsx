@@ -2,16 +2,16 @@ import { NavLink, Link } from 'react-router-dom'
 
 export default function PlayerNavbar({ activeItem }) {
   const links = [
-    { to: '/nivel-3/jugador-dashboard', label: 'Dashboard', key: 'dashboard' },
-    { to: '/nivel-3/jugador-perfil', label: 'Mi Perfil', key: 'perfil' },
-    { to: '/nivel-3/jugador-cursos', label: 'Mis Cursos', key: 'cursos' },
-    { to: '/nivel-3/jugador-referidos', label: 'Referidos', key: 'referidos' },
+    { to: '/jugador-dashboard', label: 'Dashboard', key: 'dashboard' },
+    { to: '/jugador-perfil', label: 'Mi Perfil', key: 'perfil' },
+    { to: '/jugador-cursos', label: 'Mis Cursos', key: 'cursos' },
+    { to: '/jugador-referidos', label: 'Referidos', key: 'referidos' },
   ]
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-white shadow-sm">
       <div className="flex justify-between items-center h-16 px-8 max-w-7xl mx-auto">
-        <Link to="/nivel-3/home" className="text-lg font-bold text-[#0A1A3A]" style={{ fontFamily: "'Noto Serif'", fontStyle: 'italic' }}>
+        <Link to="/" className="text-lg font-bold text-[#0A1A3A]" style={{ fontFamily: "'Noto Serif'", fontStyle: 'italic' }}>
           ML Scouting
         </Link>
         <div className="flex items-center gap-6">

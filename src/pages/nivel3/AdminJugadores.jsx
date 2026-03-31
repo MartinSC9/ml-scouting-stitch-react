@@ -65,7 +65,7 @@ export default function AdminJugadores() {
                 <tr key={i} className="hover:bg-slate-50">
                   <td className="p-3"><input type="checkbox" className="rounded border-slate-300" /></td>
                   <td className="p-3">
-                    <Link to="/nivel-3/admin/jugador-detalle" className="flex items-center gap-2 text-[#0A1A3A] font-medium hover:underline">
+                    <Link to="/admin/jugador-detalle" className="flex items-center gap-2 text-[#0A1A3A] font-medium hover:underline">
                       <div className="w-8 h-8 bg-slate-200 rounded-full flex items-center justify-center shrink-0"><Icon name="person" className="text-slate-400 text-sm" /></div>
                       {p.name}
                     </Link>

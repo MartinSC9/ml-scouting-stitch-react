@@ -1,4 +1,6 @@
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route, Navigate, useLocation, useNavigationType } from 'react-router-dom'
+import { useEffect } from 'react'
+import ScrollToTopButton from './components/ScrollToTopButton'
 
 // Nivel 3 pages
 import N3Home from './pages/nivel3/Home'
@@ -9,6 +11,7 @@ import N3Blog from './pages/nivel3/Blog'
 import N3BlogArticulo from './pages/nivel3/BlogArticulo'
 import N3Contacto from './pages/nivel3/Contacto'
 import N3Legal from './pages/nivel3/Legal'
+import N3Opiniones from './pages/nivel3/Opiniones'
 import N3JugadorDashboard from './pages/nivel3/JugadorDashboard'
 import N3JugadorPerfil from './pages/nivel3/JugadorPerfil'
 import N3JugadorCursos from './pages/nivel3/JugadorCursos'
@@ -25,37 +28,56 @@ import N3AdminReferidos from './pages/nivel3/AdminReferidos'
 import N3AdminAnalytics from './pages/nivel3/AdminAnalytics'
 import N3AdminConfiguracion from './pages/nivel3/AdminConfiguracion'
 
+function ScrollToTop() {
+  const { pathname, hash } = useLocation()
+  const navType = useNavigationType()
+  useEffect(() => {
+    if (navType === 'POP') return // back/forward: let browser restore scroll
+    if (hash) {
+      setTimeout(() => {
+        const el = document.getElementById(hash.replace('#', ''))
+        if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      }, 100)
+    } else {
+      window.scrollTo(0, 0)
+    }
+  }, [pathname, hash, navType])
+  return null
+}
+
 export default function App() {
   return (
+    <>
+    <ScrollToTop />
+    <ScrollToTopButton />
     <Routes>
-      <Route path="/" element={<Navigate to="/nivel-3/home" replace />} />
-
-      {/* Nivel 3 */}
-      <Route path="/nivel-3/home" element={<N3Home />} />
-      <Route path="/nivel-3/servicios" element={<N3Servicios />} />
-      <Route path="/nivel-3/diagnostico" element={<N3Diagnostico />} />
-      <Route path="/nivel-3/curso" element={<N3Curso />} />
-      <Route path="/nivel-3/blog" element={<N3Blog />} />
-      <Route path="/nivel-3/blog-articulo" element={<N3BlogArticulo />} />
-      <Route path="/nivel-3/contacto" element={<N3Contacto />} />
-      <Route path="/nivel-3/legal" element={<N3Legal />} />
-      <Route path="/nivel-3/jugador-dashboard" element={<N3JugadorDashboard />} />
-      <Route path="/nivel-3/jugador-perfil" element={<N3JugadorPerfil />} />
-      <Route path="/nivel-3/jugador-cursos" element={<N3JugadorCursos />} />
-      <Route path="/nivel-3/jugador-clase" element={<N3JugadorClase />} />
-      <Route path="/nivel-3/jugador-referidos" element={<N3JugadorReferidos />} />
-      <Route path="/nivel-3/admin/dashboard" element={<N3AdminDashboard />} />
-      <Route path="/nivel-3/admin/jugadores" element={<N3AdminJugadores />} />
-      <Route path="/nivel-3/admin/jugador-detalle" element={<N3AdminJugadorDetalle />} />
-      <Route path="/nivel-3/admin/crm" element={<N3AdminCrm />} />
-      <Route path="/nivel-3/admin/cursos" element={<N3AdminCursos />} />
-      <Route path="/nivel-3/admin/blog" element={<N3AdminBlog />} />
-      <Route path="/nivel-3/admin/finanzas" element={<N3AdminFinanzas />} />
-      <Route path="/nivel-3/admin/referidos" element={<N3AdminReferidos />} />
-      <Route path="/nivel-3/admin/analytics" element={<N3AdminAnalytics />} />
-      <Route path="/nivel-3/admin/configuracion" element={<N3AdminConfiguracion />} />
+      <Route path="/" element={<N3Home />} />
+      <Route path="/servicios-para-jugadores" element={<N3Servicios />} />
+      <Route path="/diagnostico" element={<N3Diagnostico />} />
+      <Route path="/curso" element={<N3Curso />} />
+      <Route path="/blog" element={<N3Blog />} />
+      <Route path="/blog-articulo" element={<N3BlogArticulo />} />
+      <Route path="/contacto" element={<N3Contacto />} />
+      <Route path="/legal" element={<N3Legal />} />
+      <Route path="/opiniones" element={<N3Opiniones />} />
+      <Route path="/jugador-dashboard" element={<N3JugadorDashboard />} />
+      <Route path="/jugador-perfil" element={<N3JugadorPerfil />} />
+      <Route path="/jugador-cursos" element={<N3JugadorCursos />} />
+      <Route path="/jugador-clase" element={<N3JugadorClase />} />
+      <Route path="/jugador-referidos" element={<N3JugadorReferidos />} />
+      <Route path="/admin/dashboard" element={<N3AdminDashboard />} />
+      <Route path="/admin/jugadores" element={<N3AdminJugadores />} />
+      <Route path="/admin/jugador-detalle" element={<N3AdminJugadorDetalle />} />
+      <Route path="/admin/crm" element={<N3AdminCrm />} />
+      <Route path="/admin/cursos" element={<N3AdminCursos />} />
+      <Route path="/admin/blog" element={<N3AdminBlog />} />
+      <Route path="/admin/finanzas" element={<N3AdminFinanzas />} />
+      <Route path="/admin/referidos" element={<N3AdminReferidos />} />
+      <Route path="/admin/analytics" element={<N3AdminAnalytics />} />
+      <Route path="/admin/configuracion" element={<N3AdminConfiguracion />} />
 
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
+    </>
   )
 }

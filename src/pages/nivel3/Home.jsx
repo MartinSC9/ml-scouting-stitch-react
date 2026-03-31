@@ -44,9 +44,9 @@ export default function Home() {
           <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6" style={{fontFamily:"'Noto Serif'"}}>Impulsamos el futbol con scouting profesional, estrategia y experiencia</h1>
           <p className="text-slate-300 text-lg mb-10 max-w-2xl mx-auto">Ayudamos a clubes, jugadores y profesionales del futbol a alcanzar su maximo potencial con asesorias especializadas, servicios personalizados y formacion en scouting.</p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/nivel-3/servicios" className="flex items-center gap-2 bg-white text-[#0A1A3A] px-8 py-3 rounded-lg font-semibold text-sm hover:bg-slate-100 transition"><Icon name="sports_soccer" className="text-lg" />Soy Jugador</Link>
-            <Link to="/nivel-3/contacto" className="flex items-center gap-2 border-2 border-white text-white px-8 py-3 rounded-lg font-semibold text-sm hover:bg-white/10 transition"><Icon name="stadium" className="text-lg" />Soy Club</Link>
-            <Link to="/nivel-3/curso" className="flex items-center gap-2 border-2 border-white text-white px-8 py-3 rounded-lg font-semibold text-sm hover:bg-white/10 transition"><Icon name="search" className="text-lg" />Quiero ser Scout</Link>
+            <Link to="/servicios-para-jugadores" className="flex items-center gap-2 bg-white text-[#0A1A3A] px-8 py-3 rounded-lg font-semibold text-sm hover:bg-slate-100 transition"><Icon name="sports_soccer" className="text-lg" />Soy Jugador</Link>
+            <Link to="/contacto" className="flex items-center gap-2 border-2 border-white text-white px-8 py-3 rounded-lg font-semibold text-sm hover:bg-white/10 transition"><Icon name="stadium" className="text-lg" />Soy Club</Link>
+            <Link to="/curso" className="flex items-center gap-2 border-2 border-white text-white px-8 py-3 rounded-lg font-semibold text-sm hover:bg-white/10 transition"><Icon name="search" className="text-lg" />Quiero ser Scout</Link>
           </div>
         </div>
       </section>
@@ -83,7 +83,7 @@ export default function Home() {
       </section>
 
       {/* Services */}
-      <section className="py-16 px-8 bg-white">
+      <section id="servicios" className="py-16 px-8 bg-white scroll-mt-20">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-10">
             <span className="text-[#445d94] font-bold tracking-widest text-xs uppercase mb-3 block">Que ofrecemos</span>
@@ -93,24 +93,22 @@ export default function Home() {
 
           <div className="grid md:grid-cols-3 gap-5">
             {[
-              {icon:'sports_soccer',title:'Servicios para Jugadores',desc:'Diagnostico, Plan de Mercado, Evaluacion profesional y asesoria para perfil y video. Desde €35.',link:'/nivel-3/servicios#diagnostico',cta:'Ver servicios',cta2:'Hacer diagnostico',link2:'/nivel-3/diagnostico',popular:true},
-              {icon:'groups',title:'Asesoria para Clubes',desc:'Trabajamos con clubes para identificar y recomendar jugadores que se adapten a sus necesidades tacticas.',link:'/nivel-3/contacto',cta:'Contactar'},
-              {icon:'school',title:'Curso de Scouting',desc:'Aprende las metodologias y herramientas del scouting profesional. Proxima edicion disponible.',link:'/nivel-3/curso',cta:'Ver curso'},
+              {icon:'sports_soccer',title:'Servicios para Jugadores',desc:'Diagnostico, Plan de Mercado, Evaluacion profesional y asesoria para perfil y video. Desde €35.',link:'/servicios-para-jugadores',cta:'Ver servicios'},
+              {icon:'groups',title:'Asesoria para Clubes',desc:'Trabajamos con clubes para identificar y recomendar jugadores que se adapten a sus necesidades tacticas.',link:'/contacto',cta:'Contactar'},
+              {icon:'school',title:'Curso de Scouting',desc:'Aprende las metodologias y herramientas del scouting profesional. Proxima edicion disponible.',link:'/curso',cta:'Ver curso'},
             ].map((s,i)=>(
-              <div key={i} className={`relative rounded-xl p-6 flex flex-col transition-all duration-300 hover:-translate-y-1 ${s.popular ? 'bg-[#0A1A3A] text-white shadow-xl' : 'bg-white border border-slate-200 hover:shadow-lg'}`}>
-                {s.popular && <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#445d94] text-white text-[10px] font-bold px-4 py-1 rounded-full uppercase tracking-wider">Para jugadores</span>}
+              <div key={i} className="rounded-xl p-6 flex flex-col transition-all duration-300 hover:-translate-y-1 bg-white border border-slate-200 hover:shadow-lg">
                 <div className="flex items-center gap-3 mb-4">
-                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${s.popular ? 'bg-white/10' : 'bg-[#0A1A3A]/5'}`}>
-                    <Icon name={s.icon} className={s.popular ? 'text-[#a7c0fd]' : 'text-[#0A1A3A]'} />
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-[#0A1A3A]/5">
+                    <Icon name={s.icon} className="text-[#0A1A3A]" />
                   </div>
-                  <h3 className={`text-lg font-bold ${s.popular ? 'text-white' : 'text-[#0A1A3A]'}`}>{s.title}</h3>
+                  <h3 className="text-lg font-bold text-[#0A1A3A]">{s.title}</h3>
                 </div>
-                <p className={`text-sm leading-relaxed mb-6 flex-1 ${s.popular ? 'text-slate-300' : 'text-slate-500'}`}>{s.desc}</p>
-                <div className={`flex gap-2 ${s.cta2 ? '' : 'flex-col'}`}>
-                  <Link to={s.link} className={`block text-center py-2.5 rounded-lg font-semibold text-sm transition-all flex-1 ${s.popular ? 'bg-white text-[#0A1A3A] hover:bg-slate-100' : 'bg-[#0A1A3A] text-white hover:bg-[#0A1A3A]/90'}`}>
+                <p className="text-sm leading-relaxed mb-6 flex-1 text-slate-500">{s.desc}</p>
+                <div className="flex flex-col gap-2">
+                  <Link to={s.link} className="block text-center py-2.5 rounded-lg font-semibold text-sm transition-all flex-1 bg-[#0A1A3A] text-white hover:bg-[#0A1A3A]/90">
                     {s.cta}
                   </Link>
-                  {s.cta2 && <Link to={s.link2} className="block text-center py-2.5 rounded-lg font-semibold text-sm transition-all flex-1 border border-white/30 text-white hover:bg-white/10">{s.cta2}</Link>}
                 </div>
               </div>
             ))}
@@ -123,7 +121,7 @@ export default function Home() {
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-3xl font-bold text-white mb-4" style={{fontFamily:"'Noto Serif'"}}>Diagnostico Gratuito</h2>
           <p className="text-slate-300 mb-8 max-w-lg mx-auto">Responde unas preguntas y recibe una evaluacion inicial sobre tu perfil y las oportunidades disponibles para vos.</p>
-          <Link to="/nivel-3/diagnostico" className="inline-block bg-white text-[#0A1A3A] px-8 py-3 rounded-lg font-semibold hover:bg-slate-100 transition">Comenzar Diagnostico</Link>
+          <Link to="/diagnostico" className="inline-block bg-white text-[#0A1A3A] px-8 py-3 rounded-lg font-semibold hover:bg-slate-100 transition">Comenzar Diagnostico</Link>
         </div>
       </section>
 
@@ -150,10 +148,10 @@ export default function Home() {
           ))}
         </div>
         <div className="max-w-6xl mx-auto text-center mt-8">
-          <a href="https://marcolujan.tiendup.com/curso/curso-de-scouting-de-futbol/opiniones" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-[#445d94] font-semibold text-sm hover:text-[#0A1A3A] transition">
+          <Link to="/opiniones" className="inline-flex items-center gap-2 text-[#445d94] font-semibold text-sm hover:text-[#0A1A3A] transition">
             Ver todas nuestras resenas
             <Icon name="arrow_forward" className="text-sm" />
-          </a>
+          </Link>
         </div>
       </section>
 
@@ -168,7 +166,7 @@ export default function Home() {
               <div className="bg-white/10 px-4 py-2 rounded-lg text-center"><p className="text-white font-bold text-lg">SEP</p><p className="text-slate-300 text-xs">2026</p></div>
               <div className="text-white"><p className="font-semibold">83 personas en lista de espera</p><p className="text-sm text-slate-300">Cupos limitados</p></div>
             </div>
-            <Link to="/nivel-3/curso" className="inline-block bg-white text-[#0A1A3A] px-8 py-3 rounded-lg font-semibold hover:bg-slate-100 transition">Ver mas informacion</Link>
+            <Link to="/curso" className="inline-block bg-white text-[#0A1A3A] px-8 py-3 rounded-lg font-semibold hover:bg-slate-100 transition">Ver mas informacion</Link>
           </div>
           <div className="w-64 h-48 rounded-xl overflow-hidden"><img className="w-full h-full object-cover" alt="Curso Scouting" src={images.aerialPitch} /></div>
         </div>
@@ -179,7 +177,7 @@ export default function Home() {
         <div className="max-w-6xl mx-auto">
           <div className="flex justify-between items-center mb-12">
             <div><h2 className="text-3xl font-bold text-[#0A1A3A]" style={{fontFamily:"'Noto Serif'"}}>Blog</h2><p className="text-slate-500 mt-1">Articulos sobre scouting, mercado y desarrollo profesional.</p></div>
-            <Link to="/nivel-3/blog" className="text-sm font-semibold text-[#0A1A3A] hover:underline">Ver todos &rarr;</Link>
+            <Link to="/blog" className="text-sm font-semibold text-[#0A1A3A] hover:underline">Ver todos &rarr;</Link>
           </div>
           <div className="grid md:grid-cols-3 gap-8">
             {[
@@ -187,7 +185,7 @@ export default function Home() {
               {cat:'Mercado',title:'Las ligas europeas que mas buscan talento sudamericano',desc:'Un analisis de las oportunidades en Portugal, Italia y Belgica.',date:'10 Oct 2026 · 8 min lectura',bg:'bg-[#d9e2ff]/30'},
               {cat:'Para Jugadores',title:'5 errores que cometen los jugadores al buscar club',desc:'Evita estos errores comunes que pueden arruinar tu oportunidad.',date:'5 Oct 2026 · 6 min lectura',bg:'bg-[#d9e2ff]/30'},
             ].map((a,i)=>(
-              <Link key={i} to="/nivel-3/blog-articulo" className="bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-md transition group">
+              <Link key={i} to="/blog-articulo" className="bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-md transition group">
                 <div className={`h-40 ${a.bg} flex items-center justify-center`}><Icon name="article" className="text-[#445d94]/40" style={{fontSize:'40px'}} /></div>
                 <div className="p-5">
                   <span className="text-xs bg-slate-100 px-2 py-1 rounded-full text-slate-600">{a.cat}</span>
@@ -207,14 +205,9 @@ export default function Home() {
           <Icon name="share" className="text-[#0A1A3A] mb-4" style={{fontSize:'48px'}} />
           <h2 className="text-3xl font-bold text-[#0A1A3A] mb-4" style={{fontFamily:"'Noto Serif'"}}>Invita a un companero y gana beneficios</h2>
           <p className="text-slate-500 mb-6 max-w-lg mx-auto">Comparte tu codigo de referido con otros jugadores. Por cada persona que contrate un servicio, ambos reciben un <strong className="text-[#0A1A3A]">10% de descuento</strong> en su proximo servicio.</p>
-          <Link to="/nivel-3/contacto" className="inline-block bg-[#0A1A3A] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#0A1A3A]/90 transition">Conocer mas</Link>
+          <Link to="/contacto" className="inline-block bg-[#0A1A3A] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#0A1A3A]/90 transition">Conocer mas</Link>
         </div>
       </section>
-
-      {/* WhatsApp Float */}
-      <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" className="fixed bottom-6 right-6 w-14 h-14 bg-green-500 rounded-full flex items-center justify-center shadow-lg hover:bg-green-600 transition z-50">
-        <Icon name="chat" className="text-white" style={{fontSize:'28px'}} />
-      </a>
 
       <Footer />
     </div>

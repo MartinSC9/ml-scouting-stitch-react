@@ -3,7 +3,6 @@ import { Link, useLocation } from 'react-router-dom'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import Icon from '../../components/Icon'
-import PlanMercadoBanner from '../../components/PlanMercadoBanner'
 
 const services = [
   {
@@ -109,7 +108,10 @@ export default function Servicios() {
   // Scroll to detail when it opens
   useEffect(() => {
     if (open && detailRef.current) {
-      setTimeout(() => detailRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' }), 50)
+      setTimeout(() => {
+        const y = detailRef.current.getBoundingClientRect().top + window.scrollY - 100
+        window.scrollTo({ top: y, behavior: 'smooth' })
+      }, 50)
     }
   }, [open])
 
@@ -131,8 +133,30 @@ export default function Servicios() {
         {/* Hero */}
         <section className="bg-[#0A1A3A] py-20 px-8">
           <div className="max-w-4xl mx-auto text-center">
-            <h1 className="text-4xl font-bold text-white mb-4" style={{fontFamily:"'Noto Serif'"}}>Nuestros Servicios</h1>
+            <h1 className="text-4xl font-bold text-white mb-4" style={{fontFamily:"'Noto Serif'"}}>Servicios para Jugadores</h1>
             <p className="text-slate-300 text-lg">Soluciones profesionales para cada etapa de tu carrera futbolistica.</p>
+          </div>
+        </section>
+
+        {/* Diagnostic banner */}
+        <section className="px-8 -mb-8 relative z-10">
+          <div className="max-w-5xl mx-auto -mt-6">
+            <Link to="/diagnostico" className="block bg-white rounded-xl border border-slate-200 shadow-sm p-5 hover:shadow-md transition-all group">
+              <div className="flex items-center justify-between gap-4">
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 bg-[#445d94]/10 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Icon name="quiz" className="text-[#445d94]" />
+                  </div>
+                  <div>
+                    <p className="font-semibold text-[#0A1A3A] text-sm">No sabes cual necesitas?</p>
+                    <p className="text-slate-500 text-xs">Hace el diagnostico gratuito y te recomendamos el servicio ideal para tu caso.</p>
+                  </div>
+                </div>
+                <span className="hidden sm:flex items-center gap-1 text-[#445d94] font-semibold text-sm whitespace-nowrap group-hover:gap-2 transition-all">
+                  Hacer diagnostico <Icon name="arrow_forward" className="text-sm" />
+                </span>
+              </div>
+            </Link>
           </div>
         </section>
 
@@ -196,88 +220,10 @@ export default function Servicios() {
           </section>
         )}
 
-        {/* Featured Plan de Mercado Banner */}
-        <section className="py-20 px-8" style={{background: '#0A1A3A'}}>
-          <div className="max-w-6xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              {/* Left: description + features + buy button */}
-              <div>
-                <div className="flex items-center gap-3 mb-6">
-                  <span className="bg-[#2cb1bc] text-white px-3 py-1 rounded-full text-xs font-bold uppercase tracking-widest">Recomendado</span>
-                  <div className="h-px flex-1 bg-gradient-to-r from-white/20 to-transparent"></div>
-                </div>
-                <h2 className="text-3xl md:text-4xl font-bold text-white mb-4" style={{fontFamily:"'Noto Serif'"}}>Plan de Mercado Personalizado</h2>
-                <p className="text-slate-300 text-lg leading-relaxed mb-8">
-                  Analizamos tu perfil y tu material, definimos a que ligas o equipos puedes apuntar, te entregamos informe, video, estrategia y contactos.
-                </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-10">
-                  {[
-                    'Analisis personalizado del material del futbolista',
-                    'Informe profesional de scouting',
-                    'Video de analisis tecnico del jugador',
-                    'Guia de ligas y equipos donde tu perfil encaja',
-                    'Contactos de clubes o estructuras donde presentar tu perfil',
-                    'Sesion 1 a 1 con devolucion tecnica',
-                    'Optimizacion del perfil del jugador',
-                    'Asesoria administrativa',
-                  ].map((item, i) => (
-                    <div key={i} className="flex items-start gap-2.5">
-                      <Icon name="check_circle" className="text-[#2cb1bc] text-lg flex-shrink-0" />
-                      <span className="text-sm text-slate-200">{item}</span>
-                    </div>
-                  ))}
-                </div>
-                <a
-                  href="https://mlscouting.gumroad.com/l/plandemercadopersonalizado"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-block w-full sm:w-auto text-center bg-[#2cb1bc] text-white px-10 py-4 rounded-xl font-bold text-lg hover:bg-[#25a0aa] transition-colors shadow-lg"
-                >
-                  Comprar Plan de Mercado - &euro;200
-                </a>
-                <div className="flex items-center gap-2 text-white/50 text-xs mt-4">
-                  <Icon name="lock" className="text-sm" />
-                  <span>Pago seguro procesado por Gumroad.</span>
-                </div>
-              </div>
-
-              {/* Right: PlanMercadoBanner */}
-              <div>
-                <PlanMercadoBanner variant="blue" />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* How it works */}
-        <section className="py-20 px-8 bg-white">
-          <div className="max-w-4xl mx-auto text-center mb-16">
-            <h2 className="text-3xl font-bold text-[#0A1A3A] mb-4" style={{fontFamily:"'Noto Serif'"}}>Como Funciona</h2>
-            <p className="text-slate-500">Un proceso simple y profesional en 4 pasos.</p>
-          </div>
-          <div className="max-w-4xl mx-auto relative">
-            <div className="hidden md:block absolute top-12 left-[12.5%] right-[12.5%] h-0.5 bg-slate-200"></div>
-            <div className="grid md:grid-cols-4 gap-8 relative">
-              {[
-                {icon:'quiz',title:'1. Diagnostico',desc:'Completa el diagnostico gratuito para que conozcamos tu perfil.'},
-                {icon:'handshake',title:'2. Reunion',desc:'Agendamos una llamada para definir el servicio ideal.'},
-                {icon:'analytics',title:'3. Analisis',desc:'Trabajamos en tu informe, plan de mercado o evaluacion.'},
-                {icon:'rocket_launch',title:'4. Accion',desc:'Ejecutamos el plan y te conectamos con oportunidades reales.'},
-              ].map((s,i)=>(
-                <div key={i} className="text-center">
-                  <div className="w-24 h-24 bg-[#0A1A3A] rounded-full flex items-center justify-center mx-auto mb-4 relative z-10"><Icon name={s.icon} className="text-white" style={{fontSize:'32px'}} /></div>
-                  <h3 className="font-bold text-[#0A1A3A] mb-2">{s.title}</h3>
-                  <p className="text-sm text-slate-500">{s.desc}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
         {/* Comparison */}
-        <section className="py-20 px-8">
+        <section className="py-12 px-8 bg-white">
           <div className="max-w-5xl mx-auto">
-            <h2 className="text-3xl font-bold text-[#0A1A3A] text-center mb-12" style={{fontFamily:"'Noto Serif'"}}>Compara los Servicios</h2>
+            <h2 className="text-2xl font-bold text-[#0A1A3A] text-center mb-8" style={{fontFamily:"'Noto Serif'"}}>Compara los Servicios</h2>
             <div className="bg-white rounded-xl shadow-sm border border-slate-100 overflow-x-auto">
               <table className="w-full text-sm">
                 <thead>
@@ -307,13 +253,14 @@ export default function Servicios() {
         </section>
 
         {/* CTA */}
-        <section className="py-16 px-8 bg-[#0A1A3A]">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl font-bold text-white mb-4" style={{fontFamily:"'Noto Serif'"}}>No sabes cual elegir?</h2>
-            <p className="text-slate-300 mb-8">Hace el diagnostico gratuito y te recomendamos el servicio ideal para tu perfil.</p>
-            <Link to="/nivel-3/diagnostico" className="inline-block bg-white text-[#0A1A3A] px-8 py-3 rounded-lg font-semibold hover:bg-slate-100 transition">Comenzar Diagnostico</Link>
+        <section className="py-12 px-8 bg-[#0A1A3A]">
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-2xl font-bold text-white mb-3" style={{fontFamily:"'Noto Serif'"}}>No sabes cual elegir?</h2>
+            <p className="text-slate-300 text-sm mb-6">Hace el diagnostico gratuito y te recomendamos el servicio ideal.</p>
+            <Link to="/diagnostico" className="inline-block bg-white text-[#0A1A3A] px-8 py-3 rounded-lg font-semibold hover:bg-slate-100 transition">Comenzar Diagnostico</Link>
           </div>
         </section>
+
       </main>
       <Footer />
     </div>

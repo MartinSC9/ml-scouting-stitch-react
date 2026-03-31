@@ -9,7 +9,7 @@ export default function BlogArticulo() {
       <Navbar activeItem="blog" />
       <main className="pt-28 pb-16 px-8">
         <article className="max-w-3xl mx-auto">
-          <Link to="/nivel-3/blog" className="text-sm text-[#445d94] hover:underline mb-6 inline-flex items-center gap-1"><Icon name="arrow_back" className="text-sm" /> Volver al Blog</Link>
+          <Link to="/blog" className="text-sm text-[#445d94] hover:underline mb-6 inline-flex items-center gap-1"><Icon name="arrow_back" className="text-sm" /> Volver al Blog</Link>
           <span className="block text-xs bg-blue-50 text-blue-700 px-2 py-1 rounded-full w-fit mb-4">Scouting</span>
           <h1 className="text-3xl md:text-4xl font-bold text-[#0A1A3A] mb-4" style={{fontFamily:"'Noto Serif'"}}>Como preparar tu video highlight para scouts</h1>
           <div className="flex items-center gap-4 mb-8 text-sm text-slate-500">
@@ -50,7 +50,7 @@ export default function BlogArticulo() {
             <h3 className="text-xl font-bold text-[#0A1A3A] mb-6" style={{fontFamily:"'Noto Serif'"}}>Articulos relacionados</h3>
             <div className="grid md:grid-cols-2 gap-6">
               {[{title:'Las ligas europeas que mas buscan talento sudamericano',cat:'Mercado',date:'10 Oct 2026'},{title:'5 errores que cometen los jugadores al buscar club',cat:'Para Jugadores',date:'5 Oct 2026'}].map((a,i)=>(
-                <Link key={i} to="/nivel-3/blog-articulo" className="bg-white rounded-xl p-5 border border-slate-100 hover:shadow-md transition group">
+                <Link key={i} to="/blog-articulo" className="bg-white rounded-xl p-5 border border-slate-100 hover:shadow-md transition group">
                   <span className="text-xs bg-slate-100 px-2 py-1 rounded-full text-slate-600">{a.cat}</span>
                   <h4 className="font-bold text-[#0A1A3A] mt-2 group-hover:underline">{a.title}</h4>
                   <p className="text-xs text-slate-400 mt-2">{a.date}</p>

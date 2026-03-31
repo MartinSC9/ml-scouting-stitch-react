@@ -3,16 +3,16 @@ import Icon from './Icon'
 import Logo from './Logo'
 
 const n3Items = [
-  { key: 'dashboard', icon: 'dashboard', label: 'Dashboard', href: '/nivel-3/admin/dashboard' },
-  { key: 'jugadores', icon: 'groups', label: 'Jugadores', href: '/nivel-3/admin/jugadores' },
-  { key: 'servicios', icon: 'handshake', label: 'Servicios', href: '/nivel-3/admin/cursos' },
-  { key: 'curso', icon: 'school', label: 'Curso Scouting', href: '/nivel-3/admin/cursos' },
-  { key: 'blog', icon: 'article', label: 'Blog', href: '/nivel-3/admin/blog' },
-  { key: 'crm', icon: 'hub', label: 'Leads / CRM', href: '/nivel-3/admin/crm' },
-  { key: 'finanzas', icon: 'payments', label: 'Pagos / Finanzas', href: '/nivel-3/admin/finanzas' },
-  { key: 'referidos', icon: 'share', label: 'Referidos', href: '/nivel-3/admin/referidos' },
-  { key: 'analytics', icon: 'analytics', label: 'Analytics', href: '/nivel-3/admin/analytics' },
-  { key: 'configuracion', icon: 'settings', label: 'Configuracion', href: '/nivel-3/admin/configuracion' },
+  { key: 'dashboard', icon: 'dashboard', label: 'Dashboard', href: '/admin/dashboard' },
+  { key: 'jugadores', icon: 'groups', label: 'Jugadores', href: '/admin/jugadores' },
+  { key: 'servicios', icon: 'handshake', label: 'Servicios', href: '/admin/cursos' },
+  { key: 'curso', icon: 'school', label: 'Curso Scouting', href: '/admin/cursos' },
+  { key: 'blog', icon: 'article', label: 'Blog', href: '/admin/blog' },
+  { key: 'crm', icon: 'hub', label: 'Leads / CRM', href: '/admin/crm' },
+  { key: 'finanzas', icon: 'payments', label: 'Pagos / Finanzas', href: '/admin/finanzas' },
+  { key: 'referidos', icon: 'share', label: 'Referidos', href: '/admin/referidos' },
+  { key: 'analytics', icon: 'analytics', label: 'Analytics', href: '/admin/analytics' },
+  { key: 'configuracion', icon: 'settings', label: 'Configuracion', href: '/admin/configuracion' },
 ]
 
 export default function AdminSidebar({ activeItem }) {

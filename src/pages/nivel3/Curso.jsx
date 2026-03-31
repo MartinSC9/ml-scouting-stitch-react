@@ -164,9 +164,10 @@ export default function Curso() {
                 {q:'Cuales son las posibilidades reales de conseguir trabajo una vez finalizado el curso?',video:'https://ml-scouting.com/wp-content/uploads/2025/05/Cuales-son-las-posibilidades-reales-de-conseguir-trabajo-una-vez-finalizado-el-curso.mp4'},
               ].map((f,i)=>(
                 <details key={i} className="bg-[#f7f9fc] rounded-xl border border-slate-100 overflow-hidden group">
-                  <summary className="flex items-center justify-between p-5 cursor-pointer font-semibold text-[#0A1A3A] text-sm">
-                    {f.q}
-                    <Icon name="expand_more" className="text-slate-400 transition-transform group-open:rotate-180" />
+                  <summary className="flex items-center gap-3 p-5 cursor-pointer font-semibold text-[#0A1A3A] text-sm">
+                    <Icon name="play_circle" filled className="text-[#445d94] text-xl flex-shrink-0" />
+                    <span className="flex-1">{f.q}</span>
+                    <Icon name="expand_more" className="text-slate-400 transition-transform group-open:rotate-180 flex-shrink-0" />
                   </summary>
                   <div className="px-5 pb-5">
                     <video className="w-full rounded-lg aspect-video object-cover bg-black" controls playsInline preload="metadata" poster="https://ml-scouting.com/wp-content/uploads/2025/02/curso_scouting.png">

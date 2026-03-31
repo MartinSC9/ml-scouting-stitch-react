@@ -39,7 +39,7 @@ export default function JugadorCursos() {
               </div>
               <span className={`text-xs font-semibold px-3 py-1 rounded-full ${m.statusBg}`}>{m.status}</span>
               {m.status!=='Bloqueado' && (
-                <Link to="/nivel-3/jugador-clase" className="text-[#445d94] hover:text-[#0A1A3A]"><Icon name="play_circle" className="text-xl" /></Link>
+                <Link to="/jugador-clase" className="text-[#445d94] hover:text-[#0A1A3A]"><Icon name="play_circle" className="text-xl" /></Link>
               )}
             </div>
           ))}

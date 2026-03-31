@@ -6,8 +6,25 @@ export default function Contacto() {
   return (
     <div className="bg-[#f7f9fc] text-[#191c1e]">
       <Navbar activeItem="contacto" />
-      <section className="pt-24 pb-10 px-6">
-        <div className="max-w-6xl mx-auto">
+      <section className="relative pt-24 pb-10 px-6 overflow-hidden">
+        {/* Subtle field lines texture */}
+        <div className="absolute inset-0 pointer-events-none" style={{ opacity: 0.04 }}>
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="fieldLines" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse">
+                <line x1="60" y1="0" x2="60" y2="120" stroke="#0A1A3A" strokeWidth="1" />
+                <line x1="0" y1="60" x2="120" y2="60" stroke="#0A1A3A" strokeWidth="1" />
+                <circle cx="60" cy="60" r="30" fill="none" stroke="#0A1A3A" strokeWidth="1" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#fieldLines)" />
+          </svg>
+        </div>
+        {/* Gradient accents */}
+        <div className="absolute -top-32 -right-32 w-96 h-96 bg-[#445d94]/[0.04] rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-[#a7c0fd]/[0.05] rounded-full blur-3xl pointer-events-none" />
+
+        <div className="relative max-w-6xl mx-auto">
           <div className="text-center mb-8">
             <h1 className="text-3xl md:text-4xl font-bold text-[#0A1A3A] mb-2" style={{fontFamily:"'Noto Serif'"}}>Contactanos</h1>
             <p className="text-slate-500">Estamos aca para ayudarte</p>

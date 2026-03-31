@@ -31,7 +31,7 @@ export default function Blog() {
           <div className="grid lg:grid-cols-4 gap-8">
             <div className="lg:col-span-3 grid md:grid-cols-2 xl:grid-cols-3 gap-6">
               {articles.map((a,i)=>(
-                <Link key={i} to="/nivel-3/blog-articulo" className="bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-md transition group">
+                <Link key={i} to="/blog-articulo" className="bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100 hover:shadow-md transition group">
                   <div className={`h-40 ${a.bg} flex items-center justify-center`}><Icon name="article" className="text-[#445d94]/40" style={{fontSize:'40px'}} /></div>
                   <div className="p-5">
                     <span className={`text-xs ${a.catBg} px-2 py-1 rounded-full`}>{a.cat}</span>

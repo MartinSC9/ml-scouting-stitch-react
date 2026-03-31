@@ -546,7 +546,7 @@ export default function Diagnostico() {
                 {/* Options, Select, or Text Input */}
                 {isSelectStep ? (
                   <div className="dx3-stagger">
-                    <div>
+                    <div className="relative">
                       <select
                         value={answers[step] ?? ''}
                         onChange={(e) => {
@@ -561,13 +561,14 @@ export default function Diagnostico() {
                             }, 300)
                           }, 400)
                         }}
-                        className="dx3-text-input w-full p-5 rounded-xl bg-[#f2f4f7] text-[#0A1A3A] text-lg font-medium appearance-none cursor-pointer"
+                        className="dx3-text-input w-full p-5 pr-12 rounded-xl bg-[#f2f4f7] text-[#0A1A3A] text-lg font-medium appearance-none cursor-pointer"
                       >
                         <option value="" disabled>Selecciona tu posicion</option>
                         {currentStep.options.map((opt, i) => (
                           <option key={i} value={opt.label}>{opt.label}</option>
                         ))}
                       </select>
+                      <Icon name="expand_more" className="absolute right-4 top-1/2 -translate-y-1/2 text-[#45464e] text-2xl pointer-events-none" />
                     </div>
                   </div>
                 ) : isTextStep ? (
@@ -621,7 +622,7 @@ export default function Diagnostico() {
                     <Icon name="arrow_back" className="text-sm" /> Volver
                   </button>
                   <div className="flex items-center gap-4">
-                    {!isTextStep && answers[step] != null && (
+                    {!isTextStep && !isSelectStep && answers[step] != null && (
                       <button
                         onClick={goNext}
                         className="bg-[#0A1A3A] text-white px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-[#0A1A3A]/25 hover:scale-[1.03] active:scale-95"
