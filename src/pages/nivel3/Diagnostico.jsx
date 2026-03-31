@@ -385,7 +385,7 @@ export default function Diagnostico() {
         }
       `}</style>
 
-      <Navbar activeItem="diagnostico" />
+      <Navbar activeItem="diagnostico" transparent />
 
       {/* Hero con imagen de fondo */}
       <section className="relative pt-40 pb-16 px-4 overflow-hidden min-h-screen flex items-center">
@@ -635,7 +635,7 @@ export default function Diagnostico() {
 
       </main>}
 
-      <Footer level={3} />
+      <Footer />
     </div>
   )
 }

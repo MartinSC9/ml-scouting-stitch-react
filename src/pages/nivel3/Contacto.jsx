@@ -5,7 +5,7 @@ import Icon from '../../components/Icon'
 export default function Contacto() {
   return (
     <div className="bg-[#f7f9fc] text-[#191c1e]">
-      <Navbar activeItem="contacto" level={3} />
+      <Navbar activeItem="contacto" />
       <section className="pt-32 pb-20 px-8">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
@@ -46,7 +46,7 @@ export default function Contacto() {
           </div>
         </div>
       </section>
-      <Footer level={3} />
+      <Footer />
     </div>
   )
 }

@@ -6,7 +6,7 @@ import Icon from '../../components/Icon'
 export default function BlogArticulo() {
   return (
     <div className="bg-[#f7f9fc] text-[#191c1e]">
-      <Navbar activeItem="blog" level={3} />
+      <Navbar activeItem="blog" />
       <main className="pt-28 pb-16 px-8">
         <article className="max-w-3xl mx-auto">
           <Link to="/nivel-3/blog" className="text-sm text-[#445d94] hover:underline mb-6 inline-flex items-center gap-1"><Icon name="arrow_back" className="text-sm" /> Volver al Blog</Link>
@@ -60,7 +60,7 @@ export default function BlogArticulo() {
           </div>
         </article>
       </main>
-      <Footer level={3} />
+      <Footer />
     </div>
   )
 }

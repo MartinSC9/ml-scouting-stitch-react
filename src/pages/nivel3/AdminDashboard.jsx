@@ -201,7 +201,7 @@ export default function AdminDashboard() {
                       <td className="px-6 py-4">{m.player}</td>
                       <td className="px-6 py-4 text-slate-500">{m.type}</td>
                       <td className="px-6 py-4 text-right">
-                        {m.hasLink ? <a className="text-[#2B4C8C] font-bold text-xs hover:underline" href="#">Enlace</a> : <span className="text-slate-300 text-xs italic">Pendiente</span>}
+                        {m.hasLink ? <a className="text-[#2B4C8C] font-bold text-xs hover:underline" href="/nivel-3/servicios">Enlace</a> : <span className="text-slate-300 text-xs italic">Pendiente</span>}
                       </td>
                     </tr>
                   ))}

@@ -23,7 +23,7 @@ export default function Home() {
 
   return (
     <div className="bg-[#f7f9fc] text-[#191c1e]">
-      <Navbar activeItem="inicio" transparent={navTransparent} />
+      <Navbar activeItem="inicio" transparent={navTransparent} hero />
 
       {/* Hero */}
       <section className="relative pt-52 pb-28 px-8 overflow-hidden">
@@ -42,20 +42,29 @@ export default function Home() {
         </div>
         <div className="relative z-10 max-w-5xl mx-auto text-center">
           <h1 className="text-4xl md:text-5xl font-bold text-white leading-tight mb-6" style={{fontFamily:"'Noto Serif'"}}>Impulsamos el futbol con scouting profesional, estrategia y experiencia</h1>
-          <p className="text-slate-300 text-lg mb-10 max-w-2xl mx-auto">Conectamos jugadores con oportunidades reales en el futbol internacional a traves de analisis profesional, formacion y una red global de contactos.</p>
+          <p className="text-slate-300 text-lg mb-10 max-w-2xl mx-auto">Ayudamos a clubes, jugadores y profesionales del futbol a alcanzar su maximo potencial con asesorias especializadas, servicios personalizados y formacion en scouting.</p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link to="/nivel-3/servicios" className="bg-white text-[#0A1A3A] px-8 py-3 rounded-lg font-semibold text-sm hover:bg-slate-100 transition">Soy Jugador</Link>
-            <Link to="/nivel-3/contacto" className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold text-sm hover:bg-white/10 transition">Soy Club</Link>
-            <Link to="/nivel-3/curso" className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold text-sm hover:bg-white/10 transition">Quiero ser Scout</Link>
+            <Link to="/nivel-3/servicios" className="flex items-center gap-2 bg-white text-[#0A1A3A] px-8 py-3 rounded-lg font-semibold text-sm hover:bg-slate-100 transition"><Icon name="sports_soccer" className="text-lg" />Soy Jugador</Link>
+            <Link to="/nivel-3/contacto" className="flex items-center gap-2 border-2 border-white text-white px-8 py-3 rounded-lg font-semibold text-sm hover:bg-white/10 transition"><Icon name="stadium" className="text-lg" />Soy Club</Link>
+            <Link to="/nivel-3/curso" className="flex items-center gap-2 border-2 border-white text-white px-8 py-3 rounded-lg font-semibold text-sm hover:bg-white/10 transition"><Icon name="search" className="text-lg" />Quiero ser Scout</Link>
           </div>
         </div>
       </section>
 
       {/* About Marco */}
-      <section className="py-20 px-8">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-          <div className="aspect-square rounded-full overflow-hidden border-[12px] border-white shadow-xl max-w-sm mx-auto">
-            <img className="w-full h-full object-cover object-top" alt="Marco Lujan" src={images.marcoLujan} />
+      <section className="py-20 px-8 relative overflow-hidden">
+        {/* Subtle background pattern */}
+        <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(#0A1A3A 1px, transparent 1px)', backgroundSize: '24px 24px' }} />
+        <div className="absolute top-10 -right-20 w-80 h-80 rounded-full border border-[#0A1A3A]/[0.06]" />
+        <div className="absolute bottom-10 -left-20 w-60 h-60 rounded-full border border-[#445d94]/[0.06]" />
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center relative z-10">
+          <div className="relative max-w-sm mx-auto">
+            {/* Decorative accent behind photo */}
+            <div className="absolute -inset-3 rounded-2xl bg-gradient-to-br from-[#0A1A3A] to-[#445d94] rotate-3" />
+            <div className="relative rounded-2xl overflow-hidden shadow-2xl">
+              <img className="w-full aspect-[3/4] object-cover object-top" alt="Marco Lujan" src={images.marcoLujan} />
+              <div className="absolute bottom-0 inset-x-0 h-1/3 bg-gradient-to-t from-[#0A1A3A]/60 to-transparent" />
+            </div>
           </div>
           <div>
             <p className="text-[#445d94] text-sm font-semibold uppercase tracking-wider mb-2">Sobre el Fundador</p>
@@ -74,25 +83,35 @@ export default function Home() {
       </section>
 
       {/* Services */}
-      <section className="py-20 px-8 bg-white">
-        <div className="max-w-6xl mx-auto text-center mb-12">
-          <h2 className="text-3xl font-bold text-[#0A1A3A] mb-4" style={{fontFamily:"'Noto Serif'"}}>Nuestros Servicios</h2>
-          <p className="text-slate-500 max-w-xl mx-auto">Soluciones integrales para potenciar tu carrera en el futbol profesional.</p>
-        </div>
-        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
-          {[
-            {icon:'assessment',title:'Informe Tecnico',desc:'Analisis completo de tus capacidades tecnicas, fisicas y tacticas con recomendaciones profesionales.',price:'\u20AC150'},
-            {icon:'travel_explore',title:'Plan de Mercado',desc:'Estrategia personalizada para posicionarte en los mercados mas adecuados a tu perfil futbolistico.',price:'\u20AC250',popular:true},
-            {icon:'groups',title:'Representacion',desc:'Acompanamiento integral con acceso a nuestra red de clubes, agentes y oportunidades de prueba.',price:'\u20AC500'},
-          ].map((s,i)=>(
-            <div key={i} className={`bg-white p-8 rounded-xl shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all border ${s.popular?'ring-2 ring-[#0A1A3A] border-[#0A1A3A]':'border-slate-100'}`}>
-              <div className="w-14 h-14 bg-[#0A1A3A] rounded-lg flex items-center justify-center mb-6"><Icon name={s.icon} className="text-white text-2xl" /></div>
-              <h3 className="text-xl font-bold text-[#0A1A3A] mb-3" style={{fontFamily:"'Noto Serif'"}}>{s.title}</h3>
-              <p className="text-slate-500 text-sm leading-relaxed mb-4">{s.desc}</p>
-              <p className="text-[#0A1A3A] font-bold text-lg">{s.price}</p>
-              {s.popular && <span className="inline-block mt-2 text-xs bg-[#0A1A3A] text-white px-3 py-1 rounded-full">Mas popular</span>}
-            </div>
-          ))}
+      <section className="py-16 px-8 bg-white">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-10">
+            <span className="text-[#445d94] font-bold tracking-widest text-xs uppercase mb-3 block">Que ofrecemos</span>
+            <h2 className="text-3xl font-bold text-[#0A1A3A] mb-2" style={{fontFamily:"'Noto Serif'"}}>Nuestros Servicios</h2>
+            <p className="text-slate-500 text-sm max-w-xl mx-auto">Soluciones profesionales para clubes, jugadores y futuros scouts.</p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-5">
+            {[
+              {icon:'sports_soccer',title:'Servicios para Jugadores',desc:'Diagnostico, Plan de Mercado, Evaluacion profesional y asesoria para perfil y video. Desde €35.',link:'/nivel-3/servicios',cta:'Ver servicios',popular:true},
+              {icon:'groups',title:'Asesoria para Clubes',desc:'Trabajamos con clubes para identificar y recomendar jugadores que se adapten a sus necesidades tacticas.',link:'/nivel-3/contacto',cta:'Contactar'},
+              {icon:'school',title:'Curso de Scouting',desc:'Aprende las metodologias y herramientas del scouting profesional. Proxima edicion disponible.',link:'/nivel-3/curso',cta:'Ver curso'},
+            ].map((s,i)=>(
+              <div key={i} className={`relative rounded-xl p-6 flex flex-col transition-all duration-300 hover:-translate-y-1 ${s.popular ? 'bg-[#0A1A3A] text-white shadow-xl' : 'bg-white border border-slate-200 hover:shadow-lg'}`}>
+                {s.popular && <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#445d94] text-white text-[10px] font-bold px-4 py-1 rounded-full uppercase tracking-wider">Para jugadores</span>}
+                <div className="flex items-center gap-3 mb-4">
+                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center ${s.popular ? 'bg-white/10' : 'bg-[#0A1A3A]/5'}`}>
+                    <Icon name={s.icon} className={s.popular ? 'text-[#a7c0fd]' : 'text-[#0A1A3A]'} />
+                  </div>
+                  <h3 className={`text-lg font-bold ${s.popular ? 'text-white' : 'text-[#0A1A3A]'}`}>{s.title}</h3>
+                </div>
+                <p className={`text-sm leading-relaxed mb-6 flex-1 ${s.popular ? 'text-slate-300' : 'text-slate-500'}`}>{s.desc}</p>
+                <Link to={s.link} className={`block text-center py-2.5 rounded-lg font-semibold text-sm transition-all ${s.popular ? 'bg-white text-[#0A1A3A] hover:bg-slate-100' : 'bg-[#0A1A3A] text-white hover:bg-[#0A1A3A]/90'}`}>
+                  {s.cta}
+                </Link>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -105,51 +124,33 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Success Stories */}
-      <section className="py-20 px-8">
-        <div className="max-w-6xl mx-auto text-center mb-12">
-          <h2 className="text-3xl font-bold text-[#0A1A3A] mb-4" style={{fontFamily:"'Noto Serif'"}}>Casos de Exito</h2>
-          <p className="text-slate-500">Jugadores que confiaron en nosotros y dieron el salto.</p>
-        </div>
-        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
-          {[
-            {pais:'Argentina',pos:'Mediocampista',name:'Lucas Martinez',desc:'Paso de jugar en la tercera division a firmar contrato con un club de la Serie B italiana gracias al Plan de Mercado.',tag:'Plan de Mercado',img:images.marcoPhoto1},
-            {pais:'Colombia',pos:'Delantero',name:'Santiago Ruiz',desc:'El informe tecnico le permitio conocer sus fortalezas y mejorar sus debilidades. Hoy juega en Portugal.',tag:'Informe Tecnico',img:images.marcoPhoto2},
-            {pais:'Uruguay',pos:'Defensor',name:'Federico Gomez',desc:'Con la representacion integral, logro una prueba en un club de la segunda division espanola y quedo seleccionado.',tag:'Representacion',img:images.teamPhoto},
-          ].map((c,i)=>(
-            <div key={i} className="bg-white rounded-xl overflow-hidden shadow-sm border border-slate-100">
-              <div className="h-48 overflow-hidden"><img className="w-full h-full object-cover" alt={c.name} src={c.img} /></div>
-              <div className="p-6">
-                <div className="flex items-center gap-2 mb-2"><span className="text-xs bg-slate-100 px-2 py-1 rounded-full text-slate-600">{c.pais}</span><span className="text-xs text-slate-500">{c.pos}</span></div>
-                <h3 className="font-bold text-[#0A1A3A] mb-2">{c.name}</h3>
-                <p className="text-sm text-slate-500 mb-3">{c.desc}</p>
-                <span className="text-xs bg-[#a7c0fd] text-[#0A1A3A] px-3 py-1 rounded-full font-medium">{c.tag}</span>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* Testimonials */}
       <section className="py-20 px-8 bg-white">
         <div className="max-w-6xl mx-auto text-center mb-12">
-          <h2 className="text-3xl font-bold text-[#0A1A3A] mb-4" style={{fontFamily:"'Noto Serif'"}}>Lo que dicen nuestros jugadores</h2>
+          <span className="text-[#445d94] font-bold tracking-widest text-xs uppercase mb-3 block">Testimonios</span>
+          <h2 className="text-3xl font-bold text-[#0A1A3A] mb-4" style={{fontFamily:"'Noto Serif'"}}>Que dicen quienes confian en nosotros</h2>
+          <p className="text-slate-500 max-w-2xl mx-auto">Esto opinan de nuestro servicio jugadores que potenciaron su carrera y scouts que se formaron con nuestra agencia.</p>
         </div>
-        <div className="max-w-6xl mx-auto grid md:grid-cols-3 gap-8">
+        <div className="max-w-6xl mx-auto grid md:grid-cols-2 gap-8">
           {[
-            {q:'El informe tecnico fue increiblemente detallado. Me ayudo a entender exactamente en que tenia que mejorar para dar el siguiente paso en mi carrera.',n:'Diego Fernandez',r:'Jugador - Argentina',img:images.testimonial1},
-            {q:'Marco tiene un ojo unico para detectar talento. Gracias a su red de contactos, pude hacer pruebas en tres clubes europeos.',n:'Andres Ramirez',r:'Jugador - Colombia',img:images.testimonial2},
-            {q:'El curso de scouting cambio mi forma de ver el futbol. Ahora trabajo como scout freelance gracias a la formacion y la red de ML Scouting.',n:'Pablo Torres',r:'Scout - Mexico',img:images.testimonial3},
+            {q:'ML Scouting es un curso que se destaca por ofrecer sesiones en vivo y evaluacion de jugadores en situaciones reales.',n:'Alumno del Curso',r:'Scout en formacion',img:images.testimonial1},
+            {q:'Este es un gran paso para tu formacion y carrera, ensenandote a crear informes profesionales con practicas en vivo y mentorias con gente que ya esta introducida en el maximo nivel.',n:'Alumno del Curso',r:'Scout en formacion',img:images.testimonial2},
           ].map((t,i)=>(
-            <div key={i} className="bg-[#f7f9fc] p-6 rounded-xl">
+            <div key={i} className="bg-[#f7f9fc] p-8 rounded-xl">
               <div className="flex gap-1 mb-4 text-yellow-400">{[1,2,3,4,5].map(s=><Icon key={s} name="star" filled className="text-sm" />)}</div>
-              <p className="text-slate-600 text-sm mb-4 italic">"{t.q}"</p>
+              <p className="text-slate-600 leading-relaxed mb-6 italic">"{t.q}"</p>
               <div className="flex items-center gap-3">
                 <img className="w-10 h-10 rounded-full object-cover" alt={t.n} src={t.img} />
                 <div><p className="font-semibold text-[#0A1A3A] text-sm">{t.n}</p><p className="text-xs text-slate-500">{t.r}</p></div>
               </div>
             </div>
           ))}
+        </div>
+        <div className="max-w-6xl mx-auto text-center mt-8">
+          <a href="https://marcolujan.tiendup.com/curso/curso-de-scouting-de-futbol/opiniones" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-[#445d94] font-semibold text-sm hover:text-[#0A1A3A] transition">
+            Ver todas nuestras resenas
+            <Icon name="arrow_forward" className="text-sm" />
+          </a>
         </div>
       </section>
 
@@ -212,7 +213,7 @@ export default function Home() {
         <Icon name="chat" className="text-white" style={{fontSize:'28px'}} />
       </a>
 
-      <Footer level={3} />
+      <Footer />
     </div>
   )
 }

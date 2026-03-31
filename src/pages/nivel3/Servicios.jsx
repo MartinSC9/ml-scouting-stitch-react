@@ -83,8 +83,8 @@ const comparison = [
 export default function Servicios() {
   return (
     <div className="bg-[#f7f9fc] text-[#191c1e]">
-      <Navbar activeItem="servicios" level={3} />
-      <main className="pt-20">
+      <Navbar activeItem="servicios" transparent />
+      <main>
         {/* Hero */}
         <section className="bg-[#0A1A3A] py-20 px-8">
           <div className="max-w-4xl mx-auto text-center">
@@ -260,7 +260,7 @@ export default function Servicios() {
           </div>
         </section>
       </main>
-      <Footer level={3} />
+      <Footer />
     </div>
   )
 }

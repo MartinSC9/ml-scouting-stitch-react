@@ -15,7 +15,7 @@ const articles = [
 export default function Blog() {
   return (
     <div className="bg-[#f7f9fc] text-[#191c1e]">
-      <Navbar activeItem="blog" level={3} />
+      <Navbar activeItem="blog" />
       <main className="pt-28 pb-16 px-8">
         <div className="max-w-7xl mx-auto">
           <h1 className="text-3xl font-bold text-[#0A1A3A] mb-2" style={{fontFamily:"'Noto Serif'"}}>Blog ML Scouting</h1>
@@ -66,7 +66,7 @@ export default function Blog() {
           </div>
         </div>
       </main>
-      <Footer level={3} />
+      <Footer />
     </div>
   )
 }

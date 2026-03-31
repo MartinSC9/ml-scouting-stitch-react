@@ -3,7 +3,7 @@
 
 export const images = {
   // Logo ML Scouting
-  logo: 'https://ml-scouting.com/wp-content/uploads/2024/12/LOGO_ML-removebg.png',
+  logo: new URL('./logo.png', import.meta.url).href,
 
   // Hero / Stadium
   heroStadium: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDX26t5ZAL3guhJoFbXlDRdZUZ3MkPBBxnCJYrHKLNgyyC94lZ6-JK1A-fWIImU6eUljnyUbB2DnxuN8mNMIKzZLNKhLgnu-CdUj6nB7biztYHAxLrAX0Y8gq42P0TZMH9g6kAgzHD9QVc5FqUraQ9KW-KgX3QckZ_YCnv_428U8dMWXEm2D2OU71EUX-IgDhMFkOtMIUE5d6Xw0KsPFb7sms6yX-9SJeNONeSnXnkRDhBZWtmDaM20LXkPTWLeR34hY5Z991AC3fU',
