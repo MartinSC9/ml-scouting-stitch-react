@@ -4,7 +4,7 @@ import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import Icon from '../../components/Icon'
 
-const services = [
+export const services = [
   {
     id: 'diagnostico',
     icon: 'person_search',

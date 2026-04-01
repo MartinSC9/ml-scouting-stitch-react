@@ -2,7 +2,9 @@ import { useEffect, useState, useCallback, useRef } from 'react'
 import Navbar from '../../components/Navbar'
 import Footer from '../../components/Footer'
 import Icon from '../../components/Icon'
+import { Link } from 'react-router-dom'
 import { images } from '../../assets/images'
+import { services } from './Servicios'
 
 const steps = [
   {
@@ -66,67 +68,68 @@ const steps = [
   },
 ]
 
-const resultCards = [
-  {
-    recommended: true,
-    title: 'EVALUACIÓN INDIVIDUAL ORIENTADA AL SALTO DE NIVEL (€600)',
-    description: 'Es la opción más completa para tu caso si realmente quieres dar un salto de nivel.\n\nSe trabaja con partidos completos tuyos, análisis profesional con ejemplos de video en reunión 1a1 con nuestro equipo y un informe similar al que reciben los analistas de clubes de jugadores que observan.\n\nAdemás, se define una estrategia clara, entendiendo en qué ligas encajas y se te posiciona en el mercado desde ahora hasta septiembre, realizando nosotros la oferta de tu informe y material a los clubes.',
-    links: [
-      { label: 'Mira el documento completo', url: 'https://drive.google.com/file/d/1atM_Ja-DDgvLJwDjymI8LrGMOHNtzeeX/view?usp=sharing' },
-      { label: 'Agendar reunión para información', url: 'https://calendly.com/lujanmarco15/30min' },
-    ],
-  },
-  {
-    recommended: false,
-    title: 'PLAN DE MERCADO PERSONALIZADO (€200)',
-    description: 'Aquí analizamos tu perfil y tu material, y definimos a qué ligas o equipos puedes apuntar y cómo es tu nivel actual, con devolución y análisis en reunión 1 a 1 también.\n\nTe entregamos tu informe, video, la estrategia y los contactos, pero el envío y movimiento en el mercado lo haces tú. En este servicio no incluimos tu ofrecimiento en nuestra red.',
-    links: [
-      { label: 'Detalle del servicio / Adquirir', url: 'https://mlscouting.gumroad.com/l/plandemercadopersonalizado' },
-    ],
-  },
-  {
-    recommended: false,
-    title: 'DIAGNÓSTICO con Scout Profesional 1 A 1 (€100)',
-    description: 'Diseñado para entender tu situación actual de juego, qué cuestiones mejorar y dónde estás parado hoy futbolísticamente y qué te falta para un próximo paso. Sin informe ni ofrecimiento, este servicio está pensado para los jugadores que quieren una opinión profesional de ellos como jugador y entender cómo los ven DTs, analistas, etc.',
-    links: [
-      { label: 'Detalle del servicio / Adquirir', url: 'https://mlscouting.gumroad.com/l/diagosticodeperfilconscoutprofesional' },
-    ],
-  },
-  {
-    recommended: false,
-    title: 'ASESORÍA PARA PERFIL Y VIDEO (€35)',
-    description: 'Si todavía no tienes bien estructurado tu perfil o tu material, este servicio te ayuda a entender cómo armar tu video, presentarte y enviar tu perfil correctamente a clubes.',
-    links: [
-      { label: 'Detalle del servicio / Adquirir', url: 'https://mlscouting.gumroad.com/l/mcgcsu' },
-    ],
-  },
-]
+// Determine recommended service based on quiz answers
+const getRecommendedServiceId = (answers) => {
+  const hasHighlights = answers[2] === 0
+  const unsureHighlights = answers[2] === 1
+  const noHighlights = answers[2] === 2
+  const hasFullGames = answers[4] === 0
+
+  if (noHighlights && !hasFullGames) return 'perfil-video'
+  if (unsureHighlights) return 'diagnostico'
+  if (hasHighlights && hasFullGames) return 'evaluacion'
+  return 'plan-de-mercado'
+}
+
+// Restore saved quiz state from sessionStorage
+const getSavedQuiz = () => {
+  try {
+    const raw = sessionStorage.getItem('dx3-quiz')
+    if (!raw) return null
+    return JSON.parse(raw)
+  } catch { return null }
+}
 
 export default function Diagnostico() {
-  const [started, setStarted] = useState(false)
+  const saved = useRef(getSavedQuiz())
+  const hasSavedResult = saved.current?.showResult === true
+
+  const [started, setStarted] = useState(hasSavedResult)
   const quizRef = useRef(null)
-  const [step, setStep] = useState(0)
-  const [answers, setAnswers] = useState({})
+  const [step, setStep] = useState(hasSavedResult ? steps.length - 1 : 0)
+  const [answers, setAnswers] = useState(hasSavedResult ? saved.current.answers : {})
   const [mounted, setMounted] = useState(false)
   const [animating, setAnimating] = useState(false)
-  const [showResult, setShowResult] = useState(false)
+  const [showResult, setShowResult] = useState(hasSavedResult)
   const [analyzing, setAnalyzing] = useState(false)
-  const [showCards, setShowCards] = useState(false)
+  const [showCards, setShowCards] = useState(hasSavedResult)
   const [textInput, setTextInput] = useState('')
   const totalSteps = steps.length
 
   useEffect(() => { setMounted(true) }, [])
 
-  // When result shows, trigger analyzing animation then reveal cards
+  // Persist quiz state to sessionStorage
   useEffect(() => {
     if (showResult) {
-      setAnalyzing(true)
-      setShowCards(false)
-      const t = setTimeout(() => {
+      sessionStorage.setItem('dx3-quiz', JSON.stringify({ answers, showResult: true }))
+    }
+  }, [showResult, answers])
+
+  // When result shows, trigger analyzing animation then reveal cards (skip if restored from session)
+  useEffect(() => {
+    if (showResult) {
+      if (hasSavedResult) {
         setAnalyzing(false)
         setShowCards(true)
-      }, 2800)
-      return () => clearTimeout(t)
+      } else {
+        setAnalyzing(true)
+        setShowCards(false)
+        const t = setTimeout(() => {
+          setAnalyzing(false)
+          setShowCards(true)
+        }, 2800)
+        return () => clearTimeout(t)
+      }
     } else {
       setAnalyzing(false)
       setShowCards(false)
@@ -271,6 +274,7 @@ export default function Diagnostico() {
   }
 
   const profile = showResult ? getProfileInsights() : null
+  const recommendedId = showResult ? getRecommendedServiceId(answers) : null
 
   return (
     <div className="bg-[#f7f9fc] text-[#191c1e]">
@@ -508,7 +512,7 @@ export default function Diagnostico() {
             <>
               <button
                 onClick={() => { setStarted(true); setTimeout(() => window.scrollTo({ top: quizRef.current.offsetTop - 100, behavior: 'smooth' }), 100) }}
-                className="inline-block bg-white text-[#0A1A3A] px-10 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-all hover:scale-[1.03] active:scale-95 shadow-lg mb-16"
+                className="inline-block bg-white text-[#0A1A3A] px-10 py-4 rounded-xl font-bold text-lg hover:bg-slate-100 transition-all hover:scale-[1.03] active:scale-95 shadow-lg mb-16 cursor-pointer"
               >
                 Comencemos
               </button>
@@ -582,14 +586,6 @@ export default function Diagnostico() {
                         className="dx3-text-input w-full p-5 rounded-xl bg-[#f2f4f7] text-[#0A1A3A] text-lg font-medium placeholder:text-[#45464e]/50"
                         autoFocus
                       />
-                      {textInput.trim() !== '' && (
-                        <button
-                          onClick={goNext}
-                          className="mt-6 bg-[#445d94] text-white px-8 py-3 rounded-xl font-bold text-base transition-all duration-300 hover:shadow-lg hover:shadow-[#445d94]/25 hover:scale-[1.03] active:scale-95"
-                        >
-                          Continuar
-                        </button>
-                      )}
                     </div>
                   </div>
                 ) : (
@@ -622,14 +618,17 @@ export default function Diagnostico() {
                     <Icon name="arrow_back" className="text-sm" /> Volver
                   </button>
                   <div className="flex items-center gap-4">
-                    {!isTextStep && !isSelectStep && answers[step] != null && (
-                      <button
-                        onClick={goNext}
-                        className="bg-[#0A1A3A] text-white px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 hover:shadow-lg hover:shadow-[#0A1A3A]/25 hover:scale-[1.03] active:scale-95"
-                      >
-                        {step === totalSteps - 1 ? 'Ver Resultado' : 'Continuar'}
-                      </button>
-                    )}
+                    <button
+                      onClick={goNext}
+                      disabled={!hasAnswer}
+                      className={`px-6 py-2.5 rounded-lg text-sm font-semibold transition-all duration-300 cursor-pointer ${
+                        hasAnswer
+                          ? 'bg-[#0A1A3A] text-white hover:shadow-lg hover:shadow-[#0A1A3A]/25 hover:scale-[1.03] active:scale-95'
+                          : 'bg-[#0A1A3A]/30 text-white/50 cursor-not-allowed'
+                      }`}
+                    >
+                      {step === totalSteps - 1 ? 'Ver Resultado' : 'Continuar'}
+                    </button>
                   </div>
                 </div>
               </div>
@@ -658,7 +657,7 @@ export default function Diagnostico() {
                   /* Results Phase */
                   <>
                 {/* Profile Analysis */}
-                <div className="dx3-profile-fade mb-10">
+                <div className="dx3-profile-fade mb-10 max-w-2xl mx-auto">
                   <div className="text-center mb-8">
                     <div className="dx3-check-anim inline-flex items-center justify-center w-16 h-16 rounded-full bg-[#445d94]/10 mb-4">
                       <Icon name="check_circle" filled className="text-[#445d94] text-4xl" />
@@ -708,49 +707,41 @@ export default function Diagnostico() {
                   <p className="text-[#45464e] text-sm mt-1">Estas son las opciones que mejor encajan con tu situación</p>
                 </div>
 
-                {/* Service Recommendation Cards */}
-                <div className="space-y-6 mb-10">
-                  {resultCards.map((card, i) => (
-                    <div
-                      key={i}
-                      className={`dx3-result-card rounded-xl p-8 ${
-                        card.recommended
-                          ? 'bg-white border-2 border-[#445d94] relative'
-                          : 'bg-[#f2f4f7]'
-                      }`}
-                      style={{ animationDelay: `${0.1 + i * 0.1}s` }}
-                    >
-                      {card.recommended && (
-                        <span className="absolute -top-3 left-6 bg-[#445d94] text-white text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-wider">
-                          OPCIÓN RECOMENDADA
+                {/* Service Cards Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-10">
+                  {services.map((s) => {
+                    const isRecommended = s.id === recommendedId
+                    return (
+                      <Link
+                        key={s.id}
+                        to={`/servicios-para-jugadores#${s.id}`}
+                        className={`dx3-result-card text-left bg-white rounded-xl p-5 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all relative flex flex-col cursor-pointer ${
+                          isRecommended
+                            ? 'ring-2 ring-[#445d94] border-transparent'
+                            : 'border border-slate-100'
+                        }`}
+                      >
+                        {isRecommended && (
+                          <span className="absolute -top-3 left-1/2 -translate-x-1/2 bg-[#445d94] text-white text-[10px] px-3 py-0.5 rounded-full font-semibold whitespace-nowrap">
+                            Recomendado para ti
+                          </span>
+                        )}
+                        <div className="flex items-center gap-3 mb-3">
+                          <div className="w-10 h-10 bg-[#0A1A3A] rounded-lg flex items-center justify-center flex-shrink-0">
+                            <Icon name={s.icon} className="text-white" />
+                          </div>
+                          <p className="text-xl font-bold text-[#0A1A3A]">{s.price}</p>
+                        </div>
+                        <h4 className="text-sm font-bold text-[#0A1A3A] mb-2 leading-snug">{s.title}</h4>
+                        <p className="text-slate-500 text-xs leading-relaxed mb-4 flex-1">{s.desc}</p>
+                        <span className={`block text-center py-2 rounded-lg text-xs font-semibold transition-colors ${
+                          isRecommended ? 'bg-[#445d94] text-white' : 'bg-[#0A1A3A] text-white'
+                        }`}>
+                          Ver detalle
                         </span>
-                      )}
-                      <h3 className="text-lg md:text-xl font-bold text-[#0A1A3A] mb-4 mt-1" style={{fontFamily:"'Noto Serif'", fontStyle: 'italic'}}>
-                        {card.title}
-                      </h3>
-                      <div className="text-[#45464e] leading-relaxed mb-6 whitespace-pre-line text-sm md:text-base">
-                        {card.description}
-                      </div>
-                      <div className="flex flex-wrap gap-4">
-                        {card.links.map((link, j) => (
-                          <a
-                            key={j}
-                            href={link.url}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            className={`inline-flex items-center gap-2 px-5 py-2.5 rounded-lg font-semibold text-sm transition-all duration-300 hover:scale-[1.03] active:scale-95 ${
-                              card.recommended && j === 0
-                                ? 'bg-[#445d94] text-white hover:shadow-lg hover:shadow-[#445d94]/25 dx3-cta-pulse'
-                                : 'bg-[#0A1A3A] text-white hover:shadow-lg hover:shadow-[#0A1A3A]/25'
-                            }`}
-                          >
-                            <Icon name="open_in_new" className="text-sm" />
-                            {link.label}
-                          </a>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
+                      </Link>
+                    )
+                  })}
                 </div>
 
                 {/* Instagram CTA */}
@@ -778,7 +769,7 @@ export default function Diagnostico() {
                 {/* Back to start */}
                 <div className="mt-8 text-center">
                   <button
-                    onClick={() => { setStep(0); setAnswers({}); setShowResult(false); setTextInput('') }}
+                    onClick={() => { sessionStorage.removeItem('dx3-quiz'); setStep(0); setAnswers({}); setShowResult(false); setTextInput('') }}
                     className="text-sm text-[#45464e] hover:text-[#0A1A3A] transition-colors"
                   >
                     Volver a realizar el diagnóstico
