@@ -45,7 +45,7 @@ export default function Home() {
           <p className="text-slate-300 text-lg mb-10 max-w-2xl mx-auto">Ayudamos a clubes, jugadores y profesionales del fútbol a alcanzar su máximo potencial con asesorías especializadas, servicios personalizados y formación en scouting.</p>
           <div className="flex flex-col sm:flex-row sm:flex-wrap justify-center gap-4 w-full max-w-md sm:max-w-none mx-auto">
             <Link to="/servicios-para-jugadores" className="flex items-center justify-center gap-2 bg-white text-[#0A1A3A] px-8 py-3 rounded-lg font-semibold text-sm hover:bg-slate-100 transition"><Icon name="sports_soccer" className="text-lg" />Soy Jugador</Link>
-            <Link to="/contacto" className="flex items-center justify-center gap-2 border-2 border-white text-white px-8 py-3 rounded-lg font-semibold text-sm hover:bg-white/10 transition"><Icon name="stadium" className="text-lg" />Soy Club</Link>
+            <a href="#contacto" onClick={(e) => { e.preventDefault(); document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth', block: 'start' }) }} className="flex items-center justify-center gap-2 border-2 border-white text-white px-8 py-3 rounded-lg font-semibold text-sm hover:bg-white/10 transition cursor-pointer"><Icon name="stadium" className="text-lg" />Soy Club</a>
             <Link to="/curso" className="flex items-center justify-center gap-2 border-2 border-white text-white px-8 py-3 rounded-lg font-semibold text-sm hover:bg-white/10 transition"><Icon name="search" className="text-lg" />Quiero ser Scout</Link>
           </div>
         </div>
@@ -106,7 +106,7 @@ export default function Home() {
           <div className="grid md:grid-cols-3 gap-5">
             {[
               {icon:'sports_soccer',title:'Servicios para Jugadores',desc:'Diagnóstico, Plan de Mercado, Evaluación profesional y asesoría para perfil y video. Desde €35.',link:'/servicios-para-jugadores',cta:'Ver servicios'},
-              {icon:'groups',title:'Asesoría para Clubes',desc:'Trabajamos con clubes para identificar y recomendar jugadores que se adapten a sus necesidades tácticas.',link:'/contacto',cta:'Contactar'},
+              {icon:'groups',title:'Asesoría para Clubes',desc:'Trabajamos con clubes para identificar y recomendar jugadores que se adapten a sus necesidades tácticas.',link:'#contacto',cta:'Contactar',isSection:true},
               {icon:'school',title:'Curso de Scouting',desc:'Aprende las metodologías y herramientas del scouting profesional. Próxima edición disponible.',link:'/curso',cta:'Ver curso'},
             ].map((s,i)=>(
               <div key={i} className="rounded-xl p-6 flex flex-col transition-all duration-300 hover:-translate-y-1 bg-white border border-slate-200 hover:shadow-lg">
@@ -118,9 +118,15 @@ export default function Home() {
                 </div>
                 <p className="text-sm leading-relaxed mb-6 flex-1 text-slate-500">{s.desc}</p>
                 <div className="flex flex-col gap-2">
-                  <Link to={s.link} className="block text-center py-2.5 rounded-lg font-semibold text-sm transition-all flex-1 bg-[#0A1A3A] text-white hover:bg-[#0A1A3A]/90">
-                    {s.cta}
-                  </Link>
+                  {s.isSection ? (
+                    <a href={s.link} onClick={(e) => { e.preventDefault(); document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth', block: 'start' }) }} className="block text-center py-2.5 rounded-lg font-semibold text-sm transition-all flex-1 bg-[#0A1A3A] text-white hover:bg-[#0A1A3A]/90 cursor-pointer">
+                      {s.cta}
+                    </a>
+                  ) : (
+                    <Link to={s.link} className="block text-center py-2.5 rounded-lg font-semibold text-sm transition-all flex-1 bg-[#0A1A3A] text-white hover:bg-[#0A1A3A]/90">
+                      {s.cta}
+                    </Link>
+                  )}
                 </div>
               </div>
             ))}
@@ -217,7 +223,45 @@ export default function Home() {
           <Icon name="share" className="text-[#0A1A3A] mb-4" style={{fontSize:'48px'}} />
           <h2 className="text-3xl font-bold text-[#0A1A3A] mb-4" style={{fontFamily:"'Noto Serif'"}}>Invita a un compañero y gana beneficios</h2>
           <p className="text-slate-500 mb-6 max-w-lg mx-auto">Comparte tu código de referido con otros jugadores. Por cada persona que contrate un servicio, ambos reciben un <strong className="text-[#0A1A3A]">10% de descuento</strong> en su próximo servicio.</p>
-          <Link to="/contacto" className="inline-block bg-[#0A1A3A] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#0A1A3A]/90 transition">Conocer más</Link>
+          <a href="#contacto" onClick={(e) => { e.preventDefault(); document.getElementById('contacto')?.scrollIntoView({ behavior: 'smooth', block: 'start' }) }} className="inline-block bg-[#0A1A3A] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#0A1A3A]/90 transition cursor-pointer">Conocer más</a>
+        </div>
+      </section>
+
+      {/* Contact Form */}
+      <section id="contacto" className="py-14 px-8 relative overflow-hidden scroll-mt-20">
+        <div className="absolute inset-0 pointer-events-none" style={{ opacity: 0.04 }}>
+          <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <pattern id="fieldLinesContact" x="0" y="0" width="120" height="120" patternUnits="userSpaceOnUse">
+                <line x1="60" y1="0" x2="60" y2="120" stroke="#0A1A3A" strokeWidth="1" />
+                <line x1="0" y1="60" x2="120" y2="60" stroke="#0A1A3A" strokeWidth="1" />
+                <circle cx="60" cy="60" r="30" fill="none" stroke="#0A1A3A" strokeWidth="1" />
+              </pattern>
+            </defs>
+            <rect width="100%" height="100%" fill="url(#fieldLinesContact)" />
+          </svg>
+        </div>
+        <div className="absolute -top-32 -right-32 w-96 h-96 bg-[#445d94]/[0.04] rounded-full blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-[#a7c0fd]/[0.05] rounded-full blur-3xl pointer-events-none" />
+        <div className="relative max-w-xl mx-auto text-center">
+          <h2 className="text-2xl font-bold text-[#0A1A3A] mb-6" style={{fontFamily:"'Noto Serif'"}}>Contáctanos</h2>
+          <form className="space-y-3 text-left">
+            <div className="grid grid-cols-2 gap-3">
+              <input type="text" className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-[#445d94] focus:border-transparent" placeholder="Nombre"/>
+              <input type="text" className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-[#445d94] focus:border-transparent" placeholder="Apellido"/>
+            </div>
+            <input type="email" className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-[#445d94] focus:border-transparent" placeholder="Email"/>
+            <select className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-[#445d94] focus:border-transparent">
+              <option value="">Asunto</option><option>Consulta sobre servicios</option><option>Consulta sobre el curso</option><option>Otro</option>
+            </select>
+            <textarea rows={3} className="w-full bg-white border border-slate-200 rounded-lg px-3 py-2.5 text-sm focus:ring-2 focus:ring-[#445d94] focus:border-transparent resize-none" placeholder="Tu mensaje..." defaultValue="Hola, me gustaría recibir más información sobre sus servicios."></textarea>
+            <button type="submit" className="w-full bg-[#0A1A3A] text-white py-2.5 rounded-lg font-semibold text-sm hover:bg-[#0A1A3A]/90 transition">Enviar</button>
+          </form>
+          <div className="flex flex-wrap justify-center gap-4 mt-6 text-sm text-slate-500">
+            <span className="flex items-center gap-1.5"><Icon name="mail" className="text-[#445d94] text-base" />contacto@ml-scouting.com</span>
+            <a href="https://www.instagram.com/mlscoutingacademy" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-[#0A1A3A] transition"><svg className="w-4 h-4 text-[#445d94]" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.054 1.97.24 2.43.403a4.088 4.088 0 011.47.957c.45.45.77.89.957 1.47.163.46.35 1.26.403 2.43.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.054 1.17-.24 1.97-.403 2.43a4.088 4.088 0 01-.957 1.47 4.088 4.088 0 01-1.47.957c-.46.163-1.26.35-2.43.403-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.054-1.97-.24-2.43-.403a4.088 4.088 0 01-1.47-.957 4.088 4.088 0 01-.957-1.47c-.163-.46-.35-1.26-.403-2.43C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.054-1.17.24-1.97.403-2.43a4.088 4.088 0 01.957-1.47A4.088 4.088 0 015.063 2.293c.46-.163 1.26-.35 2.43-.403C8.759 1.832 9.139 1.82 12 1.82zM12 0C8.741 0 8.333.014 7.053.072 5.775.13 4.905.333 4.14.63a5.876 5.876 0 00-2.126 1.384A5.876 5.876 0 00.63 4.14C.333 4.905.13 5.775.072 7.053.014 8.333 0 8.741 0 12s.014 3.667.072 4.947c.058 1.278.261 2.148.558 2.913a5.876 5.876 0 001.384 2.126A5.876 5.876 0 004.14 23.37c.765.297 1.635.5 2.913.558C8.333 23.986 8.741 24 12 24s3.667-.014 4.947-.072c1.278-.058 2.148-.261 2.913-.558a5.876 5.876 0 002.126-1.384 5.876 5.876 0 001.384-2.126c.297-.765.5-1.635.558-2.913C23.986 15.667 24 15.259 24 12s-.014-3.667-.072-4.947c-.058-1.278-.261-2.148-.558-2.913a5.876 5.876 0 00-1.384-2.126A5.876 5.876 0 0019.86.63C19.095.333 18.225.13 16.947.072 15.667.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>@mlscoutingacademy</a>
+            <a href="https://wa.me/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-[#0A1A3A] transition"><Icon name="chat" className="text-[#445d94] text-base" />WhatsApp</a>
+          </div>
         </div>
       </section>
 

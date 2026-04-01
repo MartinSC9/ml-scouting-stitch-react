@@ -133,9 +133,9 @@ export default function Curso() {
               ))}
             </div>
             <div className="text-center mt-6">
-              <a href="https://marcolujan.tiendup.com/curso/curso-de-scouting-de-futbol/opiniones" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-[#445d94] font-semibold text-sm hover:text-[#0A1A3A] transition">
+              <Link to="/opiniones" className="inline-flex items-center gap-1 text-[#445d94] font-semibold text-sm hover:text-[#0A1A3A] transition">
                 Ver todas las reseñas <Icon name="arrow_forward" className="text-sm" />
-              </a>
+              </Link>
             </div>
           </div>
         </section>

@@ -56,7 +56,7 @@ export default function Navbar({ activeItem, transparent = false, hero = false }
 
             <button onClick={() => handleSectionClick('blog')} className={linkClass(activeItem === 'blog') + ' cursor-pointer'}>Blog</button>
 
-            <NavLink to="/contacto" className={({ isActive }) => linkClass(isActive || activeItem === 'contacto')}>Contacto</NavLink>
+            <button onClick={() => handleSectionClick('contacto')} className={linkClass(activeItem === 'contacto') + ' cursor-pointer'}>Contacto</button>
 
             <a
               href="/login"
@@ -103,9 +103,9 @@ export default function Navbar({ activeItem, transparent = false, hero = false }
               <span className="flex items-center gap-3"><Icon name="article" className="text-lg" /> Blog</span>
             </button>
 
-            <NavLink to="/contacto" onClick={() => setMenuOpen(false)} className={({ isActive }) => mobileLinkClass(isActive || activeItem === 'contacto')}>
+            <button onClick={() => handleSectionClick('contacto')} className={mobileLinkClass(activeItem === 'contacto') + ' w-full text-left'}>
               <span className="flex items-center gap-3"><Icon name="mail" className="text-lg" /> Contacto</span>
-            </NavLink>
+            </button>
 
             <div className="pt-3 mt-2 border-t border-slate-100">
               <a
