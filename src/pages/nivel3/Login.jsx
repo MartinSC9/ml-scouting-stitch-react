@@ -65,31 +65,31 @@ export default function Login() {
         <div className="absolute -top-32 -right-32 w-96 h-96 bg-[#006970]/[0.08] rounded-full blur-3xl pointer-events-none" />
         <div className="absolute -bottom-24 -left-24 w-80 h-80 bg-[#445d94]/[0.06] rounded-full blur-3xl pointer-events-none" />
 
-        <div className="relative z-10 text-center max-w-md">
-          <Link to="/" className="inline-block mb-10">
-            <Logo size={140} />
+        <div className="relative z-10 text-center max-w-sm">
+          <Link to="/" className="inline-block mb-8">
+            <Logo size={100} />
           </Link>
-          <h1 className="text-4xl font-bold leading-tight mb-4" style={{ fontFamily: "'Noto Serif'" }}>
+          <h1 className="text-3xl font-bold leading-tight mb-3" style={{ fontFamily: "'Noto Serif'" }}>
             Tu carrera futbolística,<br />
             <span className="text-[#7bf1fc]">en tus manos.</span>
           </h1>
-          <p className="text-slate-400 text-lg leading-relaxed mb-12">
+          <p className="text-slate-400 text-sm leading-relaxed mb-8">
             Accede a tu perfil, servicios de scouting y seguimiento de rendimiento en un solo lugar.
           </p>
 
-          <div className="space-y-4 text-left">
+          <div className="space-y-2.5 text-left">
             {[
-              { icon: 'analytics', title: 'Diagnóstico Deportivo', desc: 'Evalúa tu rendimiento con métricas profesionales' },
-              { icon: 'description', title: 'Informes Personalizados', desc: 'Recibe análisis detallados de tu perfil' },
-              { icon: 'school', title: 'Cursos de Scouting', desc: 'Aprende cómo posicionarte en el mercado' },
+              { icon: 'analytics', title: 'Diagnóstico Deportivo', desc: 'Métricas profesionales' },
+              { icon: 'description', title: 'Informes Personalizados', desc: 'Análisis detallados' },
+              { icon: 'school', title: 'Cursos de Scouting', desc: 'Posiciónate en el mercado' },
             ].map((f, i) => (
-              <div key={i} className="flex items-center gap-4 bg-white/5 rounded-xl p-4">
-                <div className="w-10 h-10 rounded-lg bg-[#006970]/30 flex items-center justify-center flex-shrink-0">
-                  <Icon name={f.icon} className="text-[#7bf1fc] text-xl" />
+              <div key={i} className="flex items-center gap-3 bg-white/5 rounded-lg p-3">
+                <div className="w-9 h-9 rounded-lg bg-[#006970]/30 flex items-center justify-center flex-shrink-0">
+                  <Icon name={f.icon} className="text-[#7bf1fc] text-lg" />
                 </div>
                 <div>
                   <h3 className="font-semibold text-sm">{f.title}</h3>
-                  <p className="text-slate-400 text-xs mt-0.5">{f.desc}</p>
+                  <p className="text-slate-400 text-xs">{f.desc}</p>
                 </div>
               </div>
             ))}
