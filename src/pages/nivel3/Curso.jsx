@@ -79,24 +79,39 @@ export default function Curso() {
         </section>
 
         {/* Syllabus */}
-        <section className="py-16 px-8">
-          <div className="max-w-4xl mx-auto">
-            <div className="text-center mb-10">
+        <section className="py-20 px-8">
+          <div className="max-w-6xl mx-auto">
+            <div className="text-center mb-14">
               <span className="text-[#445d94] font-bold tracking-widest text-xs uppercase mb-3 block">Programa</span>
-              <h2 className="text-3xl font-bold text-[#0A1A3A] mb-2" style={{fontFamily:"'Noto Serif'"}}>6 módulos, 3 meses</h2>
-              <p className="text-slate-500 text-sm">Clases en vivo + grabaciones + prácticas reales con clubes.</p>
+              <h2 className="text-3xl font-bold text-[#0A1A3A] mb-3" style={{fontFamily:"'Noto Serif'"}}>Tu hoja de ruta en 3 meses</h2>
+              <p className="text-slate-500 text-sm max-w-lg mx-auto">6 módulos progresivos con clases en vivo, grabaciones y prácticas reales con clubes profesionales.</p>
             </div>
-            <div className="space-y-3">
-              {modules.map((m,i)=>(
-                <details key={i} className="bg-white rounded-xl border border-slate-100 overflow-hidden group">
-                  <summary className="flex items-center gap-4 p-5 cursor-pointer">
-                    <span className="w-10 h-10 bg-[#0A1A3A] text-white rounded-lg flex items-center justify-center text-sm font-bold flex-shrink-0">{m.n}</span>
-                    <Icon name={m.icon} className="text-[#445d94]" />
-                    <span className="font-bold text-[#0A1A3A] flex-1 text-sm">{m.title}</span>
-                    <Icon name="expand_more" className="text-slate-400 transition-transform group-open:rotate-180" />
-                  </summary>
-                  <div className="px-5 pb-5 pl-20 text-slate-500 text-sm">{m.desc}</div>
-                </details>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {[
+                {month:1, label:'Bases', mods:[modules[0], modules[1]], color:'from-[#0A1A3A] to-[#1a2f5a]'},
+                {month:2, label:'Herramientas', mods:[modules[2], modules[3]], color:'from-[#1a2f5a] to-[#2a4070]'},
+                {month:3, label:'Profesionalización', mods:[modules[4], modules[5]], color:'from-[#2a4070] to-[#445d94]'},
+              ].map((m,i)=>(
+                <div key={i} className="bg-white rounded-2xl border border-slate-100 overflow-hidden shadow-sm hover:shadow-lg transition-shadow duration-300 flex flex-col">
+                  <div className={`bg-gradient-to-br ${m.color} px-6 py-5 flex items-center justify-between`}>
+                    <span className="text-white font-bold text-sm">Mes {m.month}</span>
+                    <span className="bg-white/15 text-white text-xs font-semibold px-3 py-1 rounded-full">{m.label}</span>
+                  </div>
+                  <div className="p-5 flex-1 flex flex-col gap-3">
+                    {m.mods.map((mod,j)=>(
+                      <div key={j} className="flex items-center gap-3 p-3 rounded-xl bg-[#f7f9fc]">
+                        <div className="w-9 h-9 rounded-lg bg-white flex items-center justify-center flex-shrink-0 shadow-sm">
+                          <Icon name={mod.icon} className="text-[#445d94] text-lg" />
+                        </div>
+                        <div>
+                          <span className="text-[#445d94] text-[10px] font-bold">MÓDULO {mod.n}</span>
+                          <h4 className="font-semibold text-[#0A1A3A] text-sm leading-tight">{mod.title}</h4>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               ))}
             </div>
           </div>
