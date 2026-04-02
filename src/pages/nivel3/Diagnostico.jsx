@@ -508,10 +508,13 @@ export default function Diagnostico() {
 
       <Navbar activeItem="diagnostico" transparent />
 
-      {/* Hero con imagen de fondo */}
+      {/* Hero con video de fondo */}
       <section className="relative pt-40 pb-16 px-4 overflow-hidden min-h-screen flex items-center">
         <div className="absolute inset-0 z-0">
           <img className="w-full h-full object-cover" alt="Football" src={images.aerialPitch} />
+          <video className="absolute inset-0 w-full h-full object-cover" autoPlay muted loop playsInline poster={images.aerialPitch}>
+            <source src={`${import.meta.env.BASE_URL}hero-video.mp4`} type="video/mp4" />
+          </video>
           <div className="absolute inset-0 bg-[#0A1A3A]/80"></div>
         </div>
         <div className={`relative z-10 text-center max-w-3xl mx-auto ${mounted ? 'dx3-step-enter' : ''}`}>
